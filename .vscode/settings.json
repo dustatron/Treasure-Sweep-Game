@@ -1,0 +1,7 @@
+{
+  "editor.formatOnSave": true,
+  "emmet.includeLanguages": {
+    "razor": "html",
+    "aspnetcorerazor": "html"
+  }
+}
