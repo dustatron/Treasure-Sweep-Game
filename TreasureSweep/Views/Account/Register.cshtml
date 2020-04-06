@@ -1,8 +1,8 @@
 @using TreasureSweepGame.ViewModels
 @model RegisterViewModel
 
-<h2>Register a new user</h2>
-<hr />
+<h1>NEW USER REGISTRATION</h1>
+<hr/>
 @using (Html.BeginForm("Register", "Account", FormMethod.Post))
 {
     @Html.LabelFor(user => user.Email)
@@ -14,5 +14,8 @@
     @Html.LabelFor(user=> user.ConfirmPassword)
     @Html.PasswordFor(user=> user.ConfirmPassword)
 
-    <input type="submit" value="Register" />
+    <input type="submit" value="REGISTER" />
 }
+<br>
+<h4>ALREADY HAVE AN ACCOUNT?</h4>
+@Html.ActionLink("LOG IN", "Login", "Account", null, new { @class="btn-block" })
