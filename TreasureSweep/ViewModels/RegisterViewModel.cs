@@ -5,8 +5,9 @@ namespace TreasureSweepGame.ViewModels
   public class RegisterViewModel
   {
     [Required]
-    [Display(Name = "UserName")]
-    public string UserName { get; set; }
+    [EmailAddress]
+    [Display(Name = "Email")]
+    public string Email { get; set; }
 
     [Required]
     [DataType(DataType.Password)]

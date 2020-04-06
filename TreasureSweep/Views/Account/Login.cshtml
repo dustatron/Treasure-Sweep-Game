@@ -1,0 +1,16 @@
+@using TreasureSweepGame.ViewModels
+
+@model LoginViewModel
+
+<h1>LOG IN TO YOUR ACCOUNT</h1>
+<hr />
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(m => m.Email)
+  @Html.TextBoxFor(m => m.Email)
+
+  @Html.LabelFor(m => m.Password)
+  @Html.PasswordFor(m => m.Password)
+
+  <input type="submit" value="LOG IN" class="btn-block" />
+}
