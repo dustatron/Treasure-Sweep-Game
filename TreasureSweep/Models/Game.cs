@@ -77,11 +77,11 @@ namespace TreasureSweepGame.Models
     public static int[,] Scrub(int[,] board)
     {
       int[,] results = board;
-      for (int y = 0; y < 5; y++)
+      for (int y = 0; y <= 4; y++)
       {
-        for (int x = 0; x < 5; x++)
+        for (int x = 0; x <= 4; x++)
         {
-          if (results[x, y] < 2)
+          if (results[x, y] <= 2)
           {
             results[x, y] = 0;
           }

@@ -1,7 +1,4 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
+﻿a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
@@ -171,11 +168,20 @@ input {
   padding: 1%;
 }
 
-#currentPlayerBoard,
 #opponentBoard {
+  margin: auto auto;
   display: grid;
   height: 500px;
   width: 500px;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+}
+
+#currentPlayerBoard {
+  margin: auto auto;
+  display: grid;
+  height: 300px;
+  width: 300px;
   grid-template-columns: 20% 20% 20% 20% 20%;
   grid-template-rows: 20% 20% 20% 20% 20%;
 }
