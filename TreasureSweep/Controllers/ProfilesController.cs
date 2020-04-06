@@ -51,21 +51,27 @@ namespace TeasureSweepGame.Controllers
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
       profile.User = currentUser;
-
+      if (String.IsNullOrWhiteSpace(profile.Img))
+      {
+        profile.Img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq0pvzCYCY37iYYz0Od6YOgq_mdnpGe4uASGwmzwNnwpmAl0MU&s";
+      }
       _db.Profiles.Add(profile);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
     public ActionResult Edit(int id)
     {
       Profile thisProfile = _db.Profiles.FirstOrDefault(profile => profile.ProfileId == id);
-      return View();
+      return View(thisProfile);
     }
 
     [HttpPost]
     public ActionResult Edit(Profile profile)
     {
+      if (String.IsNullOrWhiteSpace(profile.Img))
+      {
+        profile.Img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq0pvzCYCY37iYYz0Od6YOgq_mdnpGe4uASGwmzwNnwpmAl0MU&s";
+      }
       _db.Entry(profile).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Index");

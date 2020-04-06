@@ -1,0 +1,13 @@
+@using TreasureSweepGame.Models
+@model TreasureSweepGame.Models.Game
+
+<h1>CREATE GAME</h1>
+@using (Html.BeginForm())
+{
+  <input type="hidden" value="@ViewBag.ProfileId" name="P1Id" id="P1Id">
+  <br>
+  <label for="P2Id">Second player ID number:</label>
+  @Html.TextBoxFor(model => model.P2Id, new {@placeholder = "add your friend's user ID"})
+  <br>
+  <input type="submit" value="START NEW GAME" class="btn-block" />
+}

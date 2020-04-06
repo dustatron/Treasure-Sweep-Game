@@ -1,0 +1,25 @@
+@model TreasureSweepGame.Models.Game
+
+<h1>Details Game</h1>
+
+<p>@Model.GameId</p>
+<p>Player 1: @ViewBag.PlayerOne</p>
+<p>Player 2: @ViewBag.PlayerTwo</p>
+
+@if(Model.TurnCount%2 == 1)
+{
+  <p>Player Two's Turn!</p>
+}
+else
+{
+  <p>Player One's Turn!</p>
+}
+@* <p>GAME OVER? @Model.IsComplete</p>
+
+@if(@Model.WinningPlayer != 0)
+{
+  <p> Winner is player @Model.WinningPlayer</p>
+
+}
+
+Show stats for each board.  *@
