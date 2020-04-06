@@ -1,4 +1,5 @@
 using System;
+using Newtonsoft.Json;
 
 namespace TreasureSweepGame.Models
 {
@@ -10,8 +11,8 @@ namespace TreasureSweepGame.Models
     public int TurnCount { get; set; }
     public bool IsComplete { get; set; }
     public int WinnerId { get; set; }
-    public int[,] P1Board { get; set; } = new int[5, 5];
-    public int[,] P2Board { get; set; } = new int[5, 5];
+    public string P1Board { get; set; }
+    public string P2Board { get; set; }
 
     public Game()
     {
@@ -26,7 +27,7 @@ namespace TreasureSweepGame.Models
 
     }
 
-    public static int[,] generateBoard()
+    public static string generateBoard()
     {
       int numberOfTreasures = 7;
 
@@ -71,9 +72,10 @@ namespace TreasureSweepGame.Models
         {
           j--;
         }
-
       }
-      return board;
+      //convert board to JSON format
+      string boardJson = JsonConvert.SerializeObject(board);
+      return boardJson;
     }
   }
 }
