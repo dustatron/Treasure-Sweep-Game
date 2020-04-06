@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using TreasureSweepGame.Models;
 using TreasureSweepGame.ViewModels;
 using System.Security.Claims;
+using Newtonsoft.Json;
+
 
 namespace TeasureSweepGame.Controllers
 {
@@ -74,6 +76,32 @@ namespace TeasureSweepGame.Controllers
     public ActionResult Error(string message)
     {
       return View(message);
+    }
+
+    public async Task<ActionResult> Turn(int id)
+    {
+      Game currentGame = _db.Games.FirstOrDefault(entry => entry.GameId == id);
+
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      Profile currentProfile = _db.Profiles.FirstOrDefault(entry => entry.User == currentUser);
+      string firstBoard = currentGame.P1Board;
+      string secondBoard = currentGame.P2Board;
+      int[,] p1Board = JsonConvert.DeserializeObject<int[,]>(firstBoard);
+      int[,] p2Board = JsonConvert.DeserializeObject<int[,]>(secondBoard);
+
+      if (currentGame.P1Id == currentProfile.ProfileId)
+      {
+        ViewBag.PlayersBoard = p1Board;
+        ViewBag.TargetBoard = Game.Scrub(p2Board);
+      }
+      else
+      {
+        ViewBag.PlayersBoard = p2Board;
+        ViewBag.TargetBoard = Game.Scrub(p1Board);
+      }
+
+      return View();
     }
   }
 }

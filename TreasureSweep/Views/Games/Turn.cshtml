@@ -1,0 +1,56 @@
+@{
+  int[,] playersBoard = ViewBag.PlayersBoard;
+  int[,] targetBoard = ViewBag.TargetBoard;
+}
+
+<h1>YOUR BOARD:</h1>
+<div id="currentPlayerBoard">
+  @for (int x = 0; x <= 4 ; x++)
+  {
+    @for (int y = 0; y <= 4 ; y++)
+    {
+      if(@playersBoard[x,y] == 0)
+      {
+        <a href="#"><img src="/img/sand.png" alt="sand"></a>
+      }
+      else if(@playersBoard[x,y] == 1)
+      {
+        <a href="#"><img src="/img/chest-closed.png" alt="hidden treasure"></a>
+      }
+      else if(@playersBoard[x,y] == 2)
+      {
+        <a href="#"><img src="/img/sand-bomb.png" alt="burried bomb"></a>
+      }
+      else if (@playersBoard[x,y] == 3)
+      {
+        <a href="#"><img src="/img/hole.png" alt="miss"></a>
+      }
+      else if(@playersBoard[x,y] == 4)
+      {
+        <a href="#"><img src="/img/chest-open.png" alt="uncovered treasure"></a>
+      }
+    }   
+  }
+</div>
+
+<h1>OPPONENT BOARD:</h1>
+<div id="opponentBoard">
+  @for (int x = 0; x <= 4; x++)
+  {
+    @for (int y = 0; y <= 4; y++)
+    {
+      if(@targetBoard[x,y] == 0)
+      {
+        <a href="#"><img src="/img/sand.png" alt="sand"></a>
+      }
+      else if (@targetBoard[x,y] == 3)
+      {
+        <a href="#"><img src="/img/hole.png" alt="miss"></a>
+      }
+      else if(@targetBoard[x,y] == 4)
+      {
+        <a href="#"><img src="/img/chest-ope.png" alt="uncovered treasure"></a>
+      }
+    }   
+  }
+</div>

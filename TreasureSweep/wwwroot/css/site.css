@@ -170,3 +170,18 @@ input {
   margin-bottom: 1%;
   padding: 1%;
 }
+
+#currentPlayerBoard,
+#opponentBoard {
+  display: grid;
+  height: 500px;
+  width: 500px;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+}
+
+#currentPlayerBoard img,
+# opponentBoard img {
+  width: 100%;
+  height: 100%;
+}

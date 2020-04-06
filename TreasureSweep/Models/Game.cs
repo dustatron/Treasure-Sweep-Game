@@ -56,10 +56,9 @@ namespace TreasureSweepGame.Models
           i--;
         }
       }
-
+      bool done = false;
       //Add mine to board
-      int numberOfMines = 1;
-      for (int j = 0; j < numberOfMines; j++)
+      while (done == false)
       {
         Random rnd = new Random();
         int mineX = rnd.Next(0, 5);
@@ -67,15 +66,28 @@ namespace TreasureSweepGame.Models
         if (board[mineX, mineY] == 0)
         {
           board[mineX, mineY] = 2;
-        }
-        else
-        {
-          j--;
+          done = true;
         }
       }
       //convert board to JSON format
       string boardJson = JsonConvert.SerializeObject(board);
       return boardJson;
+    }
+
+    public static int[,] Scrub(int[,] board)
+    {
+      int[,] results = board;
+      for (int y = 0; y < 5; y++)
+      {
+        for (int x = 0; x < 5; x++)
+        {
+          if (results[x, y] < 2)
+          {
+            results[x, y] = 0;
+          }
+        }
+      }
+      return results;
     }
   }
 }

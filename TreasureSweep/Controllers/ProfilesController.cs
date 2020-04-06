@@ -53,7 +53,7 @@ namespace TeasureSweepGame.Controllers
       profile.User = currentUser;
       if (String.IsNullOrWhiteSpace(profile.Img))
       {
-        profile.Img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq0pvzCYCY37iYYz0Od6YOgq_mdnpGe4uASGwmzwNnwpmAl0MU&s";
+        profile.Img = "/img/rubber-ducky.png";
       }
       _db.Profiles.Add(profile);
       _db.SaveChanges();
@@ -70,7 +70,7 @@ namespace TeasureSweepGame.Controllers
     {
       if (String.IsNullOrWhiteSpace(profile.Img))
       {
-        profile.Img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq0pvzCYCY37iYYz0Od6YOgq_mdnpGe4uASGwmzwNnwpmAl0MU&s";
+        profile.Img = "/img/rubber-ducky.png";
       }
       _db.Entry(profile).State = EntityState.Modified;
       _db.SaveChanges();
