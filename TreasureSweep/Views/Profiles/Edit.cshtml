@@ -1,0 +1,19 @@
+@using TreasureSweepGame.Models
+@model TreasureSweepGame.Models.Profile
+
+<h1>EDIT YOUR PROFILE</h1>
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.ProfileId)
+
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+  <br>
+  @Html.LabelFor(model => model.TagLine)
+  @Html.TextBoxFor(model => model.TagLine)
+  <br>
+  <label for="Img">Add a URL for your profile photo:</label>
+  @Html.TextBoxFor(model => model.Img)
+  <br>
+  <input type="submit" value="ADD MY PROFILE" class="btn-block" />
+}

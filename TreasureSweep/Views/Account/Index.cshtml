@@ -1,18 +1,18 @@
 @using System.Security.Claims
 
-<h2>Authentication with Identity</h2>
-<hr />
 @if (User.Identity.IsAuthenticated)
 {
-  <p>Hello @User.Identity.Name!</p>
+  <h1>Welcome, @User.Identity.Name!</h1>
   @using (Html.BeginForm("LogOff", "Account"))
   {
-    <input type="submit" class="btn btn-default" value="Log out" />
+    @Html.ActionLink("PLAY A GAME", "Index", "Games", null, new { @class="btn-block" })
+    <input type="submit" class="btn-block" value="LOG OUT" />
   }
 }
 else
 {
-  <p>@Html.ActionLink("Register", "Register")</p>
-  <p>@Html.ActionLink("Log in", "Login")</p>
-  <p>@Html.ActionLink("Home", "Index", "Home")</p>
+  <div class="two-buttons">
+    @Html.ActionLink("REGISTER", "Register", "Account", null , new { @class="btn" })
+    @Html.ActionLink("LOG IN", "Login", "Account", null, new { @class="btn" })
+  </div>
 }

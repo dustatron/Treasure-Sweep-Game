@@ -41,7 +41,7 @@ namespace TreasureSweepGame.Controllers
         }
         else
         {
-          var user = new ApplicationUser { Email = model.Email };
+          var user = new ApplicationUser { UserName = model.Email };
           IdentityResult result = await _userManager.CreateAsync(user, model.Password);
           if (result.Succeeded)
           {
@@ -72,7 +72,7 @@ namespace TreasureSweepGame.Controllers
         Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
         if (result.Succeeded)
         {
-          return RedirectToAction("Index");
+          return RedirectToAction("Index", "Profiles");
         }
         else
         {
