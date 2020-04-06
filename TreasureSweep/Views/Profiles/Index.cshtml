@@ -1,1 +1,18 @@
-<h1>Profile Index</h1>
+<h1>@Model.Name</h1>
+<h4>@Model.TagLine</h4>
+<hr />
+
+
+
+@if(Model.Games.Count == 0)
+{
+  <h4>Add a new game</h4>
+  <button class="btn btn-primary">Add a game</button>
+}
+else
+{
+  foreach (Game game in Model.Games)
+  {
+    <p>@game.GameId : Game </p> //actionlink to visit game
+  }
+}
