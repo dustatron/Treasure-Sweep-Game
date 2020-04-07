@@ -23,11 +23,11 @@
                Your Turn @Html.ActionLink($"Game ID #{game.GameId}", "Details", "Games", new { id = game.GameId})
                 @if(Model.ProfileId == game.P1Id)
                 {
-                  <span> Playing User @game.P2Id </span>
+                  <span> Playing User @game.P2Name </span>
                 }
                 else
                 {
-                  <span> Playing User  @game.P1Id </span>
+                  <span> Playing User  @game.P1Name </span>
                 }
                  @Html.ActionLink("Game Board", "Turn", "Games", new {id = game.GameId })
               </li>
@@ -40,11 +40,11 @@
                  <p>Waiting on Opponent...</p>
                 @if(Model.ProfileId == game.P1Id)
                 {
-                  <span> Playing User @game.P2Id </span>
+                  <span> Playing User @game.P2Name </span>
                 }
                 else
                 {
-                  <span> Playing User  @game.P1Id </span>
+                  <span> Playing User  @game.P1Name </span>
                 }
                  @Html.ActionLink("Game Board", "Turn", "Games", new {id = game.GameId })
               </li>
@@ -52,16 +52,16 @@
             //If you won the game
             else if(game.IsComplete == true && Model.ProfileId == game.WinningPlayer)
             {
-              <li class="list-group-item game">
+              <li class="list-group-item game bg-light">
                 <img src="img/star.png" class="img-thumbnail" />
                 @Html.ActionLink($"Game ID #{game.GameId}", "Details", "Games", new { id = game.GameId})
                 @if(Model.ProfileId == game.P1Id)
                 {
-                  <span> Playing User @game.P2Id </span>
+                  <span> Playing User @game.P2Name </span>
                 }
                 else
                 {
-                  <span> Playing User  @game.P1Id </span>
+                  <span> Playing User  @game.P1Name </span>
                 }
                  @Html.ActionLink("Game Board", "Turn", "Games", new {id = game.GameId })
               </li>
@@ -69,7 +69,7 @@
             //If you lost the game
             else if(game.IsComplete == true && Model.ProfileId != game.WinningPlayer)
             {
-              <li class="list-group-item game">
+              <li class="list-group-item game bg-light">
                 <div class="gameRow">
                   <p class="noBold">
                     <span class="redX">X </span>
@@ -78,11 +78,11 @@
 
                   @if(Model.ProfileId == game.P1Id)
                   {
-                    <span> Playing User @game.P2Id </span>
+                    <span> Playing User @game.P2Name </span>
                   }
                   else
                   {
-                    <span> Playing User  @game.P1Id </span>
+                    <span> Playing User  @game.P1Name </span>
                   }
                 </div>
                 @Html.ActionLink("Game Board", "Turn", "Games", new {id = game.GameId })

@@ -1,19 +1,20 @@
 @using TreasureSweepGame.Models
 @model TreasureSweepGame.Models.Profile
+<div class="col-md-6 offset-md-3">
+  <h1>EDIT YOUR PROFILE</h1>
+  @using (Html.BeginForm())
+  {
+    @Html.HiddenFor(model => model.ProfileId)
 
-<h1>EDIT YOUR PROFILE</h1>
-@using (Html.BeginForm())
-{
-  @Html.HiddenFor(model => model.ProfileId)
-
-  @Html.LabelFor(model => model.Name)
-  @Html.EditorFor(model => model.Name)
-  <br>
-  @Html.LabelFor(model => model.TagLine)
-  @Html.EditorFor(model => model.TagLine)
-  <br>
-  <label for="Img">Add a URL for your profile photo:</label>
-  @Html.EditorFor(model => model.Img)
-  <br>
-  <input type="submit" value="SAVE CHANGES" class="btn-block" />
-}
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+    <br>
+    @Html.LabelFor(model => model.TagLine)
+    @Html.EditorFor(model => model.TagLine)
+    <br>
+    <label for="Img">Add a URL for your profile photo:</label>
+    @Html.EditorFor(model => model.Img)
+    <br>
+    <input type="submit" value="SAVE CHANGES" class="btn-block" />
+  }
+</div>

@@ -72,7 +72,7 @@ h1 {
   text-align: center;
   font-size: 4em;
   font-weight: bolder;
-  color: #c7e78c;
+  color: #c5330e;
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: #111111;
 }
@@ -274,7 +274,7 @@ input {
 
 #logout-btn {
   border: none;
-  font-weight: 600;
+  font-weight: 900;
   padding-top: 7px;
   margin: 0;
 }
@@ -284,4 +284,9 @@ input {
   padding: 10px;
   background-color: #f88d8d;
   margin: 0, 0, 0, 20px;
+}
+
+ul.list-group {
+  height: 75vh;
+  overflow-y: scroll;
 }

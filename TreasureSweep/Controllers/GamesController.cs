@@ -48,9 +48,12 @@ namespace TeasureSweepGame.Controllers
               }
             }
           }
-          double division = (double)wins / (double)completedGames;
-          int ratio = (int)(division * 100);
-          leaders.Add(player.Name, ratio);
+          if (completedGames > 0)
+          {
+            double division = (double)wins / (double)completedGames;
+            int ratio = (int)(division * 100);
+            leaders.Add(player.Name, ratio);
+          }
         }
       }
       var sortedLeaders = from entry in leaders orderby entry.Value descending select entry;
@@ -72,16 +75,19 @@ namespace TeasureSweepGame.Controllers
       try
       {
         Profile playerTwo = _db.Profiles.FirstOrDefault(profile => profile.ProfileId == game.P2Id);
+        Profile playerOne = _db.Profiles.FirstOrDefault(profile => profile.ProfileId == game.P1Id);
 
-        if (playerTwo != null)
+        if (playerTwo != null && game.P1Id != game.P2Id)
         {
+          game.P1Name = playerOne.Name;
+          game.P2Name = playerTwo.Name;
           _db.Games.Add(game);
           _db.SaveChanges();
           return RedirectToAction("Details", new { id = game.GameId });
         }
         else
         {
-          throw new System.InvalidOperationException("User was not found");
+          throw new System.InvalidOperationException("User unavailable");
         }
       }
       catch (Exception ex)
