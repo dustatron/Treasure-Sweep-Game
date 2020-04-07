@@ -111,6 +111,11 @@ namespace TreasureSweepGame.Models
           this.IsComplete = true;
           this.WinningPlayer = this.P2Id;
         }
+        if (this.CheckWin(p2Board))
+        {
+          this.IsComplete = true;
+          this.WinningPlayer = this.P1Id;
+        }
         return p2Board;
       }
       else
@@ -130,7 +135,35 @@ namespace TreasureSweepGame.Models
           this.IsComplete = true;
           this.WinningPlayer = this.P1Id;
         }
+        if (this.CheckWin(p1Board))
+        {
+          this.IsComplete = true;
+          this.WinningPlayer = this.P2Id;
+        }
         return p1Board;
+      }
+    }
+
+    public bool CheckWin(int[,] board)
+    {
+      int hitCount = 0;
+      for (int x = 0; x < 5; x++)
+      {
+        for (int y = 0; y < 5; y++)
+        {
+          if (board[x, y] == 4)
+          {
+            hitCount++;
+          }
+        }
+      }
+      if (hitCount >= 7)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
       }
     }
   }

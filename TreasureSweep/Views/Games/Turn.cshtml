@@ -19,21 +19,19 @@
   }
 </div>
 <div class="row">
-  @if (ViewBag.IsYourTurn && @Model.IsComplete == false)
-  {
-    <h1> IT'S YOUR TURN </h1>
-  }
-  else if (@Model.IsComplete == false)
-  {
-    <h1>WAITING FOR YOUR OPPONENT...</h1>
-  }
-  else if (@Model.IsComplete) 
-  {
-    <div>
-      <h1>@ViewBag.WinningName WON!</h1>
-    </div>
-    <div>
-      <h1>GAME OVER </h1>
-    </div>
-  }
+  <div class="col-md-12">
+    @if (ViewBag.IsYourTurn && @Model.IsComplete == false)
+    {
+      <h1> IT'S YOUR TURN </h1>
+    }
+    else if (@Model.IsComplete == false)
+    {
+      <h1>WAITING FOR YOUR OPPONENT...</h1>
+    }
+    else if (@Model.IsComplete) 
+    {
+        <h1>@ViewBag.WinningName WON!</h1>
+        <h1>GAME OVER </h1>
+    }
+  </div>
 </div>
