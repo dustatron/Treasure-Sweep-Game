@@ -1,6 +1,7 @@
 @using TreasureSweepGame.Models
 @model TreasureSweepGame.Models.Game
 
+
 <h1>CREATE GAME</h1>
 @using (Html.BeginForm())
 {
@@ -12,3 +13,12 @@
   <br>
   <input type="submit" value="START NEW GAME" class="btn-block" />
 }
+
+<div class="playerSearchDiv">
+  <h3>Search for Friend's ID</h3>
+  @using(Html.BeginForm("Search", "Profiles"))
+  {
+    <input type="text" name="playerName" id="playerName">
+    <button type="submit" class="btn">Search for Friend</button>
+  }
+</div>
