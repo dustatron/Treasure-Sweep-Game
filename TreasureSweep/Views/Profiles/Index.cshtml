@@ -3,6 +3,7 @@
     <h1>@Model.Name</h1>
     <img src="@Model.Img" class="img-thumbnail">
     <h4>@Model.TagLine</h4>
+    <h5>User ID: @Model.ProfileId</h5>
     @Html.ActionLink("EDIT PROFILE", "Edit", "Profiles", new { id = Model.ProfileId }, new { @class="btn btn-info"})
   </div>
   <div class="col-md-7">
@@ -70,11 +71,11 @@
             {
               <li class="list-group-item game">
                 <div class="gameRow">
-                  <p>
+                  <p class="noBold">
                     <span class="redX">X </span>
                     @Html.ActionLink($"Game ID #{game.GameId}", "Details", "Games", new { id = game.GameId})
                   </p>
-                  
+
                   @if(Model.ProfileId == game.P1Id)
                   {
                     <span> Playing User @game.P2Id </span>
