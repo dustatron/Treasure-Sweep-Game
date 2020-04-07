@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
@@ -27,7 +28,33 @@ namespace TeasureSweepGame.Controllers
 
     public ActionResult Index()
     {
-      return View();
+      List<Profile> players = _db.Profiles.ToList();
+      Dictionary<string, int> leaders = new Dictionary<string, int>();
+      foreach (Profile player in players)
+      {
+        int wins = 0;
+        int completedGames = 0;
+        player.Games = _db.Games.Where(entry => entry.P1Id == player.ProfileId || entry.P2Id == player.ProfileId).ToList();
+        if (player.Games.Count > 0)
+        {
+          foreach (Game game in player.Games)
+          {
+            if (game.IsComplete == true)
+            {
+              completedGames += 1;
+              if (player.ProfileId == game.WinningPlayer)
+              {
+                wins += 1;
+              }
+            }
+          }
+          double division = (double)wins / (double)completedGames;
+          int ratio = (int)(division * 100);
+          leaders.Add(player.Name, ratio);
+        }
+      }
+      var sortedLeaders = from entry in leaders orderby entry.Value descending select entry;
+      return View(sortedLeaders);
     }
 
     public async Task<IActionResult> Create()
@@ -65,10 +92,13 @@ namespace TeasureSweepGame.Controllers
     public ActionResult Details(int id)
     {
       Game thisGame = _db.Games.FirstOrDefault(game => game.GameId == id);
+
       Profile playerOne = _db.Profiles.FirstOrDefault(entry => entry.ProfileId == thisGame.P1Id);
-      ViewBag.PlayerOne = playerOne.Name;
+      ViewBag.PlayerOne = playerOne;
+
       Profile playerTwo = _db.Profiles.FirstOrDefault(entry => entry.ProfileId == thisGame.P2Id);
-      ViewBag.PlayerTwo = playerTwo.Name;
+      ViewBag.PlayerTwo = playerTwo;
+
       if (thisGame.IsComplete == true && thisGame.WinningPlayer == playerOne.ProfileId)
       {
         ViewBag.WinningName = playerOne.Name;
