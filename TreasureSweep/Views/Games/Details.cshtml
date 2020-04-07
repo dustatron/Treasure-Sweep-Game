@@ -1,17 +1,5 @@
 @model TreasureSweepGame.Models.Game
 
-@{
-  string winnerName = "";
-  if (Model.WinningPlayer == 1)
-  {
-    winnerName = ViewBag.PlayerOne;
-  }
-  else if (Model.WinningPlayer == 2)
-  {
-    winnerName = ViewBag.PlayerTwo;
-  }
-}
-
 <h1>Details Game</h1>
 
 <p>@Model.GameId</p>
@@ -30,8 +18,8 @@ else if (Model.IsComplete == false)
 }
 else
 {
-  <h4>@winnerName won!</h4>
-  
+  <h4>@ViewBag.WinningName won!</h4>
+  @Html.ActionLink("See Results", "Turn", "Games", new {id = Model.GameId}, new { @class="btn"})
 }
 <br>
 Show stats for each board. 

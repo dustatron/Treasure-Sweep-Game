@@ -1,5 +1,5 @@
 <div class="row">
-  @if (ViewBag.CurrentPlayer == 1)
+  @if (ViewBag.CurrentView == 1)
   {
     <div class="col-md-7">
       @await Html.PartialAsync("_P2TargetBoard")
@@ -8,7 +8,7 @@
       @await Html.PartialAsync("_P1Look")
     </div>
   }
-  else if (ViewBag.CurrentPlayer == 2)
+  else if (ViewBag.CurrentView == 2)
   {
     <div class="col-md-7">
       @await Html.PartialAsync("_P1TargetBoard")
@@ -19,9 +19,9 @@
   }
 </div>
 <div class="row">
-  @if (ViewBag.IsYourTurn)
+  @if (ViewBag.IsYourTurn && @Model.IsComplete == false)
   {
-    <h1>@ViewBag.PlayerName - IT'S YOUR TURN</h1>
+    <h1> IT'S YOUR TURN </h1>
   }
   else if (@Model.IsComplete == false)
   {
@@ -29,6 +29,11 @@
   }
   else if (@Model.IsComplete) 
   {
-    <h1>PLAYER @winnerName WON!</h1>
+    <div>
+      <h1>@ViewBag.WinningName WON!</h1>
+    </div>
+    <div>
+      <h1>GAME OVER </h1>
+    </div>
   }
 </div>
