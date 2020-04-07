@@ -84,29 +84,26 @@ namespace TeasureSweepGame.Controllers
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
       Profile currentProfile = _db.Profiles.FirstOrDefault(entry => entry.User == currentUser);
+
       string firstBoard = currentGame.P1Board;
       string secondBoard = currentGame.P2Board;
+
       int[,] p1Board = JsonConvert.DeserializeObject<int[,]>(firstBoard);
       int[,] p2Board = JsonConvert.DeserializeObject<int[,]>(secondBoard);
 
-      ViewBag.P1Board = p1Board;
-      ViewBag.P1Target = Game.Scrub(p1Board);
-      ViewBag.P2Board = p2Board;
-      ViewBag.P2Target = Game.Scrub(p2Board);
-
       ViewBag.PlayerName = currentProfile.Name;
-      ViewBag.GameId = id;
       ViewBag.PlayerId = currentProfile.ProfileId;
-      ViewBag.IsComplete = currentGame.IsComplete;
-      ViewBag.WinningPlayer = currentGame.WinningPlayer;
-      ViewBag.TurnCount = currentGame.TurnCount;
 
       if (currentGame.P1Id == currentProfile.ProfileId)
       {
+        ViewBag.P1Board = p1Board;
+        ViewBag.P2Target = Game.Scrub(p2Board);
         ViewBag.CurrentPlayer = 1;
       }
       else if (currentGame.P2Id == currentProfile.ProfileId)
       {
+        ViewBag.P2Board = p2Board;
+        ViewBag.P1Target = Game.Scrub(p1Board);
         ViewBag.CurrentPlayer = 2;
       }
 
@@ -118,7 +115,7 @@ namespace TeasureSweepGame.Controllers
       {
         ViewBag.IsYourTurn = true;
       }
-      return View();
+      return View(currentGame);
     }
 
     [HttpPost]
@@ -128,15 +125,18 @@ namespace TeasureSweepGame.Controllers
 
       int[,] board = currentGame.TakeTurn(x, y, playerId);
       string boardJson = JsonConvert.SerializeObject(board);
-      if (playerId == 1)
+      if (playerId == currentGame.P1Id)
       {
         currentGame.P2Board = boardJson;
+        currentGame.CurrentPlayer = currentGame.P2Id;
       }
-      else
+      else if (playerId == currentGame.P2Id)
       {
         currentGame.P1Board = boardJson;
+        currentGame.CurrentPlayer = currentGame.P1Id;
       }
       currentGame.TurnCount++;
+
       _db.Entry(currentGame).State = EntityState.Modified;
       _db.SaveChanges();
 
