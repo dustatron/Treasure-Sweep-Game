@@ -1,8 +1,8 @@
 @using System;
 @using System.Collections.Generic;
-<h1>Leaderboard</h1>
-
+<h1>LEADERBOARD</h1>
+<h2>ORDERED BY PERCENTAGE OF GAMES WON</h2>
 @foreach(KeyValuePair<string, int> leader in Model)
 {
-  <h3>Name: @leader.Key Win Percentage: @leader.Value</h3>
+  <h4>@leader.Key: @leader.Value%</h4>
 }
