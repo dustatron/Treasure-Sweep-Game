@@ -1,0 +1,23 @@
+
+@if(!User.Identity.IsAuthenticated)
+{
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Acount
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      <a class="dropdown-item" href="/Account/Register">Register</a>
+      <a class="dropdown-item" href="/Account/Login">Log in</a>
+
+    </div>
+  </li>
+}
+else
+{
+  <li class="nav-item">
+    @using (Html.BeginForm("LogOff", "Account"))
+    {
+      <input type="submit" id="logout-btn" class="nav-link text-dark" value="Log out" />
+    }
+  </li>
+}
