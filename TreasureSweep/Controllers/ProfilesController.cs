@@ -32,6 +32,7 @@ namespace TeasureSweepGame.Controllers
       {
         Profile thisProfile = _db.Profiles.FirstOrDefault(profile => profile.User == currentUser);
         thisProfile.Games = _db.Games.Where(game => game.P1Id == thisProfile.ProfileId || game.P2Id == thisProfile.ProfileId).ToList();
+        ViewBag.Profiles = _db.Profiles.ToList();
         return View(thisProfile);
       }
       catch (Exception)

@@ -1,16 +1,45 @@
 # Treasure Sweep Gme
 
-#### _C# ASP.NET Core Team Week for Epicodus_
+#### _C# .NET Team Week for Epicodus_
 
 #### By: **Michelle Morin**, **Jamison Cozart**, **Dusty McCord**, **Patrick Kille** April 6-9, 2020
 
 ## Description
-
-
+_This application allows users to play Treasure Sweep, a battleship-esque game for uncovering hidden treasure on an opponent's beach rather than sinking their ships._
 
 ## Specifications:
+* When a user registers a new account, the application redirects to a log in view.
+* A registered user can log in to their Treasure Sweep account
+* When a user logs in to their Treasure Sweep account, the application redirects to a Profile view.
+  - If the user does not have a profile, the user is instructed to create a profile. If the user has an existing profile, the profile is displayed.
+* A registered, logged in user is able to start a new game
+* Once a new game is initalized, both game players' profiles include a link to the game
+* The player who started the new game ("player one" hereafter) is initially the current player, and their opponent ("player two" hereafter) is not able to take a turn until player one's turn is complete.
+* Player one completes their turn by selecting an available (i.e., not previously selected) tile on the Treasure Sweep board labeled "opponent's board".
+* When player one selects an available tile, the tile changes appearance according to whether or not the tile hid a treasure chest, a bomb, or an empty space.
+* Player one is able to view their board for reference, to see how their opponent's moves are affecting their beach.
+* Once player one completes their turn, player two is able to view the result of player one's turn on their board (labeled "your board" from the perspective of player two). If player one struck a treasure chest, the tile will become an opened treasure chest; a mine becomes an explosion; an empty sandy space becomes a hole in the sand.
+* Turns alternate between player one and player two until a game ending condition is met. Game ending conditions include:
+  - the first player to uncover all treasure chests on the other player's beach wins
+  - a player who digs up a bomb loses
+* When a game is over, neither player is permitted to take another turn.
 
+## Project Concept:
+_We defined our minimum viable product (MVP) as an application that allows a user to:_
+* Register for a Treasure Sweep account
+* Login to their Treasure Sweep account
+* Initialize a new game and invite a friend to join the game
+* During their turn, select a target on the other user's game board,  
+* Display results of each players turn (i.e., open an uncovered treasure chest when they strike treasure, uncover an empty hole when they select an empty space, show an explosion when they select the opponent's burried bomb), and
+* Notify each user when the game was over and identify the winning player.
 
+_In addition to the MVP, we defined several stretch goals, including:_
+* Integrating a chat feature, so users in a game could send messages back and forth to one another
+* Setting up an email mailer, to notify each user when it was their turn to play.
+* Randomly generating new game boards each turn
+  - We incorporated this stretch goal in our Game model. Each new game object is instantiated with two game boards each having several treasure chests and a mine randomly placed.
+* Implementing private and public game options, so that a user could join any public game that does not have a second player
+* Hosting the application
 
 ## Setup/Installation Requirements
 

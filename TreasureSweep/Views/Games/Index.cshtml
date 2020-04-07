@@ -1,3 +1,8 @@
-<h1>Games Index</h1>
+@using System;
+@using System.Collections.Generic;
+<h1>Leaderboard</h1>
 
-make this a leaderboard of sorts
+@foreach(KeyValuePair<string, int> leader in Model)
+{
+  <h3>Name: @leader.Key Win Percentage: @leader.Value</h3>
+}
