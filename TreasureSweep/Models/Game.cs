@@ -109,7 +109,7 @@ namespace TreasureSweepGame.Models
         {
           p2Board[x, y] = 5;
           this.IsComplete = true;
-          this.WinningPlayer = 2;
+          this.WinningPlayer = this.P2Id;
         }
         return p2Board;
       }
@@ -128,7 +128,7 @@ namespace TreasureSweepGame.Models
         {
           p1Board[x, y] = 5;
           this.IsComplete = true;
-          this.WinningPlayer = 1;
+          this.WinningPlayer = this.P1Id;
         }
         return p1Board;
       }

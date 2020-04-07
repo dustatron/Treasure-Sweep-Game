@@ -91,9 +91,6 @@ namespace TeasureSweepGame.Controllers
       int[,] p1Board = JsonConvert.DeserializeObject<int[,]>(firstBoard);
       int[,] p2Board = JsonConvert.DeserializeObject<int[,]>(secondBoard);
 
-      ViewBag.PlayerName = currentProfile.Name;
-      ViewBag.PlayerId = currentProfile.ProfileId;
-
       if (currentGame.P1Id == currentProfile.ProfileId)
       {
         ViewBag.P1Board = p1Board;
@@ -105,6 +102,23 @@ namespace TeasureSweepGame.Controllers
         ViewBag.P2Board = p2Board;
         ViewBag.P1Target = Game.Scrub(p1Board);
         ViewBag.CurrentPlayer = 2;
+      }
+
+      if (currentGame.IsComplete == true)
+      {
+        ViewBag.PlayerName = currentProfile.Name;
+        ViewBag.PlayerId = currentProfile.ProfileId;
+        ViewBag.CurrentPlayerName = currentProfile.Name;
+        if (currentProfile.ProfileId == currentGame.P1Id)
+        {
+          Profile otherProfile = _db.Profiles.FirstOrDefault(entry => entry.ProfileId == currentGame.P2Id);
+          ViewBag.OtherPlayerName = otherProfile.Name;
+        }
+        else
+        {
+          Profile otherProfile = _db.Profiles.FirstOrDefault(entry => entry.ProfileId == currentGame.P1Id);
+          ViewBag.OtherPlayerName = otherProfile.Name;
+        }
       }
 
       if ((currentGame.TurnCount % 2 == 1 && currentGame.P1Id == currentProfile.ProfileId) || (currentGame.TurnCount % 2 == 0 && currentGame.P2Id == currentProfile.ProfileId))
