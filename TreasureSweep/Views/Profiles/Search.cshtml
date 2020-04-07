@@ -1,0 +1,22 @@
+@using TreasureSweepGame.Models;
+
+@foreach(Profile profile in Model)
+{
+  <div class="playerDiv">
+    <img src="@profile.Img" class="profileThumbnail" alt="profile image">
+    <div class="playerDetails">
+      <h3>@profile.Name</h3>
+      <p>Id = @profile.ProfileId</p>
+      <p>@profile.TagLine</p>
+    </div>
+    <div>
+      @using (Html.BeginForm("Create", "Games"))
+      {
+        <input type="hidden" value="@ViewBag.CurrentUserId" name="P1Id" id="P1Id">
+        <input type="hidden" value="@ViewBag.CurrentUserId" name="CurrentPlayer" id="CurrentPlayer">
+        <input type="hidden" value="@profile.ProfileId" name="P2Id" />
+        <input type="submit" value="Challenge" class="btn-block" />
+      }
+    </div>
+  </div>
+}

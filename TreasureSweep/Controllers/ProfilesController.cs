@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using TreasureSweepGame.Models;
 using TreasureSweepGame.ViewModels;
+using System.Collections.Generic;
 
 namespace TeasureSweepGame.Controllers
 {
@@ -76,6 +77,18 @@ namespace TeasureSweepGame.Controllers
       _db.Entry(profile).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Index");
+    }
+
+    //search for profiles
+    public async Task<ActionResult> Search(string playerName)
+    {
+      string searchName = playerName.ToLower();
+      List<Profile> results = _db.Profiles.Where(profile => profile.Name.ToLower().Contains(playerName)).ToList();
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      Profile thisProfile = _db.Profiles.FirstOrDefault(entry => entry.User == currentUser);
+      ViewBag.CurrentUserId = thisProfile.ProfileId;
+      return View(results);
     }
   }
 }
