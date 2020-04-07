@@ -8,6 +8,7 @@ namespace TreasureSweepGame.Models
     public int GameId { get; set; }
     public int P1Id { get; set; }
     public int P2Id { get; set; }
+    public int CurrentPlayer { get; set; }
     public int TurnCount { get; set; } = 0;
     public bool IsComplete { get; set; } = false;
     public int WinningPlayer { get; set; }
