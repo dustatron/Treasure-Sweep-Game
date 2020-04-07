@@ -1,0 +1,13 @@
+1.ReadMe 
+2. Game Details / State
+  2a. visual cue of active turns.
+3.Invite System
+  3a. Friends List
+  3b. messaging
+  3c. Search users
+4. Profile/Account Look and Feel
+5. Leaderboard
+  5a. public games / allow strangers to play together
+6. Deploy
+7. Emailer
+8. shovel cursor for hover over opponent game board
