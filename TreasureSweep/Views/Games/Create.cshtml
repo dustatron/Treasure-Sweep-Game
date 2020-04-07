@@ -5,6 +5,7 @@
 @using (Html.BeginForm())
 {
   <input type="hidden" value="@ViewBag.ProfileId" name="P1Id" id="P1Id">
+  <input type="hidden" value="@ViewBag.ProfileId" name="CurrentPlayer" id="CurrentPlayer">
   <br>
   <label for="P2Id">Second player ID number:</label>
   @Html.TextBoxFor(model => model.P2Id, new {@placeholder = "add your friend's user ID"})

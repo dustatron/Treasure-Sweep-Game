@@ -23,12 +23,12 @@
   {
     <h1>@ViewBag.PlayerName - IT'S YOUR TURN</h1>
   }
-  else if (@ViewBag.IsComplete == false)
+  else if (@Model.IsComplete == false)
   {
     <h1>WAITING FOR YOUR OPPONENT...</h1>
   }
-  else if (ViewBag.IsComplete) 
+  else if (@Model.IsComplete) 
   {
-      <h1>PLAYER @ViewBag.WinningPlayer WON!</h1>
+    <h1>PLAYER @Model.WinningPlayer WON!</h1>
   }
 </div>

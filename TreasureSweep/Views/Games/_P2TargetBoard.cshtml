@@ -6,12 +6,12 @@
     {
       if(ViewBag.P2Target[x,y] == 0)
       {
-        if (ViewBag.IsYourTurn && ViewBag.IsComplete == false)
+        if (ViewBag.IsYourTurn && Model.IsComplete == false)
         {
           @using (Html.BeginForm("Play", "Games", FormMethod.Post))
           {
-            <input type="hidden" name="playerId" id="playerId" value="@ViewBag.PlayerId">
-            <input type="hidden" name="gameId" id="gameId" value="@ViewBag.GameId">
+            <input type="hidden" name="playerId" id="playerId" value="@Model.P1Id">
+            <input type="hidden" name="gameId" id="gameId" value="@Model.GameId">
             <input type="hidden" name="x" id="x" value="@x">
             <input type="hidden" name="y" id="y" value="@y">
             <button type="submit" class="sand"></button>
@@ -32,7 +32,7 @@
       }
       else if(ViewBag.P2Target[x,y] == 5)
       {
-        <img src="/img/sand-bomb.png" alt="burried bomb">
+        <img src="/img/sand-boom.png" alt="burried bomb">
       }
     }   
   }
