@@ -168,7 +168,8 @@ input {
   padding: 1%;
 }
 
-#opponentBoard {
+#p1target,
+#p2target {
   margin: auto auto;
   display: grid;
   height: 500px;
@@ -177,7 +178,8 @@ input {
   grid-template-rows: 20% 20% 20% 20% 20%;
 }
 
-#currentPlayerBoard {
+#p1board,
+#p2board {
   margin: auto auto;
   display: grid;
   height: 300px;
@@ -186,8 +188,26 @@ input {
   grid-template-rows: 20% 20% 20% 20% 20%;
 }
 
-#currentPlayerBoard img,
-#opponentBoard img {
+#p1board img,
+#p2board img,
+#p1target img,
+#p2target img {
   width: 100%;
   height: 100%;
+}
+
+#p1target button.sand,
+#p2target button.sand {
+  background-image: url('/img/sand.png');
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  transition: all .09s;
+}
+
+#p1target button.sand:hover,
+#p2target button.sand:hover {
+  background-image: url('/img/sand-dark.png');
+  cursor: grab;
 }

@@ -24,6 +24,7 @@ namespace TreasureSweepGame.Models
       // 2 = mine
       // 3 = miss
       // 4 = hit
+      // 5 = hit mine
 
     }
 
@@ -88,6 +89,48 @@ namespace TreasureSweepGame.Models
         }
       }
       return results;
+    }
+
+    public int[,] TakeTurn(int x, int y, int currentPlayerId)
+    {
+      if (this.P1Id == currentPlayerId)
+      {
+        int[,] p2Board = JsonConvert.DeserializeObject<int[,]>(this.P2Board);
+        if (p2Board[x, y] == 0)
+        {
+          p2Board[x, y] = 3;
+        }
+        else if (p2Board[x, y] == 1)
+        {
+          p2Board[x, y] = 4;
+        }
+        else if (p2Board[x, y] == 2)
+        {
+          p2Board[x, y] = 5;
+          this.IsComplete = true;
+          this.WinningPlayer = 2;
+        }
+        return p2Board;
+      }
+      else
+      {
+        int[,] p1Board = JsonConvert.DeserializeObject<int[,]>(this.P1Board);
+        if (p1Board[x, y] == 0)
+        {
+          p1Board[x, y] = 3;
+        }
+        else if (p1Board[x, y] == 1)
+        {
+          p1Board[x, y] = 4;
+        }
+        else if (p1Board[x, y] == 2)
+        {
+          p1Board[x, y] = 5;
+          this.IsComplete = true;
+          this.WinningPlayer = 1;
+        }
+        return p1Board;
+      }
     }
   }
 }

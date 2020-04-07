@@ -11,7 +11,6 @@ using TreasureSweepGame.ViewModels;
 using System.Security.Claims;
 using Newtonsoft.Json;
 
-
 namespace TeasureSweepGame.Controllers
 {
   [Authorize]
@@ -90,18 +89,58 @@ namespace TeasureSweepGame.Controllers
       int[,] p1Board = JsonConvert.DeserializeObject<int[,]>(firstBoard);
       int[,] p2Board = JsonConvert.DeserializeObject<int[,]>(secondBoard);
 
+      ViewBag.P1Board = p1Board;
+      ViewBag.P1Target = Game.Scrub(p1Board);
+      ViewBag.P2Board = p2Board;
+      ViewBag.P2Target = Game.Scrub(p2Board);
+
+      ViewBag.PlayerName = currentProfile.Name;
+      ViewBag.GameId = id;
+      ViewBag.PlayerId = currentProfile.ProfileId;
+      ViewBag.IsComplete = currentGame.IsComplete;
+      ViewBag.WinningPlayer = currentGame.WinningPlayer;
+      ViewBag.TurnCount = currentGame.TurnCount;
+
       if (currentGame.P1Id == currentProfile.ProfileId)
       {
-        ViewBag.PlayersBoard = p1Board;
-        ViewBag.TargetBoard = Game.Scrub(p2Board);
+        ViewBag.CurrentPlayer = 1;
+      }
+      else if (currentGame.P2Id == currentProfile.ProfileId)
+      {
+        ViewBag.CurrentPlayer = 2;
+      }
+
+      if ((currentGame.TurnCount % 2 == 1 && currentGame.P1Id == currentProfile.ProfileId) || (currentGame.TurnCount % 2 == 0 && currentGame.P2Id == currentProfile.ProfileId))
+      {
+        ViewBag.IsYourTurn = false;
       }
       else
       {
-        ViewBag.PlayersBoard = p2Board;
-        ViewBag.TargetBoard = Game.Scrub(p1Board);
+        ViewBag.IsYourTurn = true;
       }
-
       return View();
+    }
+
+    [HttpPost]
+    public ActionResult Play(int playerId, int gameId, int x, int y)
+    {
+      Game currentGame = _db.Games.FirstOrDefault(entry => entry.GameId == gameId);
+
+      int[,] board = currentGame.TakeTurn(x, y, playerId);
+      string boardJson = JsonConvert.SerializeObject(board);
+      if (playerId == 1)
+      {
+        currentGame.P2Board = boardJson;
+      }
+      else
+      {
+        currentGame.P1Board = boardJson;
+      }
+      currentGame.TurnCount++;
+      _db.Entry(currentGame).State = EntityState.Modified;
+      _db.SaveChanges();
+
+      return RedirectToAction("Turn", new { id = gameId });
     }
   }
 }

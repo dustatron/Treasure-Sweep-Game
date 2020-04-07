@@ -1,61 +1,34 @@
-@{
-  int[,] playersBoard = ViewBag.PlayersBoard;
-  int[,] targetBoard = ViewBag.TargetBoard;
-}
-
 <div class="row">
-  <div class="col-md-7">
-    <h1>OPPONENT BOARD:</h1>
-    <div id="opponentBoard">
-      @for (int x = 0; x <= 4; x++)
-      {
-        @for (int y = 0; y <= 4; y++)
-        {
-          if(@targetBoard[x,y] == 0)
-          {
-            <a href="#"><img src="/img/sand.png" alt="sand"></a>
-          }
-          else if (@targetBoard[x,y] == 3)
-          {
-            <a href="#"><img src="/img/hole.png" alt="miss"></a>
-          }
-          else if(@targetBoard[x,y] == 4)
-          {
-            <a href="#"><img src="/img/chest-ope.png" alt="uncovered treasure"></a>
-          }
-        }   
-      }
+  @if (ViewBag.CurrentPlayer == 1)
+  {
+    <div class="col-md-7">
+      @await Html.PartialAsync("_P2TargetBoard")
     </div>
-  </div>
-  <div class="col-md-5">
-    <h1> YOUR BOARD: </h1>
-    <div id="currentPlayerBoard">
-      @for (int x = 0; x <= 4 ; x++)
-      {
-        @for (int y = 0; y <= 4 ; y++)
-        {
-          if(@playersBoard[x,y] == 0)
-          {
-            <img src="/img/sand.png" alt="sand">
-          }
-          else if(@playersBoard[x,y] == 1)
-          {
-            <img src="/img/chest-closed.png" alt="hidden treasure">
-          }
-          else if(@playersBoard[x,y] == 2)
-          {
-            <img src="/img/sand-bomb.png" alt="burried bomb">
-          }
-          else if (@playersBoard[x,y] == 3)
-          {
-            <img src="/img/hole.png" alt="miss">
-          }
-          else if(@playersBoard[x,y] == 4)
-          {
-            <img src="/img/chest-open.png" alt="uncovered treasure">
-          }
-        }   
-      }
+    <div class="col-md-5">
+      @await Html.PartialAsync("_P1Look")
     </div>
-  </div>
+  }
+  else if (ViewBag.CurrentPlayer == 2)
+  {
+    <div class="col-md-7">
+      @await Html.PartialAsync("_P1TargetBoard")
+    </div>
+    <div class="col-md-5">
+      @await Html.PartialAsync("_P2Look")
+    </div>
+  }
+</div>
+<div class="row">
+  @if (ViewBag.IsYourTurn)
+  {
+    <h1>@ViewBag.PlayerName - IT'S YOUR TURN</h1>
+  }
+  else if (@ViewBag.IsComplete == false)
+  {
+    <h1>WAITING FOR YOUR OPPONENT...</h1>
+  }
+  else if (ViewBag.IsComplete) 
+  {
+      <h1>PLAYER @ViewBag.WinningPlayer WON!</h1>
+  }
 </div>

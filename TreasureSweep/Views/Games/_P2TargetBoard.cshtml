@@ -1,0 +1,39 @@
+<h1>OPPONENT BOARD:</h1>
+<div id="p2target">
+  @for (int x = 0; x <= 4; x++)
+  {
+    @for (int y = 0; y <= 4; y++)
+    {
+      if(ViewBag.P2Target[x,y] == 0)
+      {
+        if (ViewBag.IsYourTurn && ViewBag.IsComplete == false)
+        {
+          @using (Html.BeginForm("Play", "Games", FormMethod.Post))
+          {
+            <input type="hidden" name="playerId" id="playerId" value="@ViewBag.PlayerId">
+            <input type="hidden" name="gameId" id="gameId" value="@ViewBag.GameId">
+            <input type="hidden" name="x" id="x" value="@x">
+            <input type="hidden" name="y" id="y" value="@y">
+            <button type="submit" class="sand"></button>
+          }
+        }
+        else
+        {
+          <img src="/img/sand.png" alt="sand">
+        }
+      }
+      else if (ViewBag.P2Target[x,y] == 3)
+      {
+        <img src="/img/miss.png" alt="miss">
+      }
+      else if(ViewBag.P2Target[x,y] == 4)
+      {
+        <img src="/img/chest-open.png" alt="uncovered treasure">
+      }
+      else if(ViewBag.P2Target[x,y] == 5)
+      {
+        <img src="/img/sand-bomb.png" alt="burried bomb">
+      }
+    }   
+  }
+</div>

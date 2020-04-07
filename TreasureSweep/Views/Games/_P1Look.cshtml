@@ -1,0 +1,31 @@
+
+  <h1> YOUR BOARD: </h1>
+  <div id="p1board">
+    @for (int x = 0; x <= 4 ; x++)
+    {
+      @for (int y = 0; y <= 4 ; y++)
+      {
+        if(ViewBag.P1Board[x,y] == 0)
+        {
+          <img src="/img/sand.png" alt="sand">
+        }
+        else if(ViewBag.P1Board[x,y] == 1)
+        {
+          <img src="/img/chest-closed.png" alt="hidden treasure">
+        }
+        else if(ViewBag.P1Board[x,y] == 2)
+        {
+          <img src="/img/sand-bomb.png" alt="burried bomb">
+        }
+        else if (ViewBag.P1Board[x,y] == 3)
+        {
+          <img src="/img/miss.png" alt="miss">
+        }
+        else if(ViewBag.P1Board[x,y] == 4)
+        {
+          <img src="/img/chest-open.png" alt="uncovered treasure">
+        }
+      }   
+    }
+  </div>
+
