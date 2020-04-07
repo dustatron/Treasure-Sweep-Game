@@ -1,25 +1,40 @@
 @model TreasureSweepGame.Models.Game
 
-<h1>Details Game</h1>
 
-<p>@Model.GameId</p>
-<p>Player 1: @ViewBag.PlayerOne</p>
-<p>Player 2: @ViewBag.PlayerTwo</p>
+<h1>GAME @Model.GameId DETAILS</h1>
 
-@if(Model.TurnCount % 2 == 1 && Model.IsComplete == false)
-{
-  <p>Player Two's Turn!</p>
-  @Html.ActionLink("Play Turn", "Turn", "Games", new {id = Model.GameId}, new { @class="btn"})
-}
-else if (Model.IsComplete == false)
-{
-  <p>Player One's Turn!</p>
-  @Html.ActionLink("Play Turn", "Turn", "Games", new {id = Model.GameId}, new { @class="btn"})
-}
-else
-{
-  <h4>@ViewBag.WinningName won!</h4>
-  @Html.ActionLink("See Results", "Turn", "Games", new {id = Model.GameId}, new { @class="btn"})
-}
-<br>
-Show stats for each board. 
+<div class="row">
+  <div class="col-md-6 text-center">
+    <h4>Player 1: @ViewBag.PlayerOne.Name</h4>
+    <img src="@ViewBag.PlayerOne.Img" alt="" class="img-thumbnail">
+  </div>
+
+  <div class="col-md-6 text-center">
+    <h4>Player 2: @ViewBag.PlayerTwo.Name</h4>
+    <img src="@ViewBag.PlayerTwo.Img" alt="" class="img-thumbnail">
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-6 offset-3 text-center">
+  @if(Model.TurnCount % 2 == 1 && Model.IsComplete == false)
+  {
+    <h3>Player Two's Turn!</h3>
+    @Html.ActionLink("Play Turn", "Turn", "Games", new {id = Model.GameId}, new { @class="btn"})
+  }
+  else if (Model.IsComplete == false)
+  {
+    <h3>Player One's Turn!</h3>
+    @Html.ActionLink("Play Turn", "Turn", "Games", new {id = Model.GameId}, new { @class="btn"})
+  }
+  else
+  {
+    <h1>@ViewBag.WinningName won!</h1>
+    @Html.ActionLink("See Results", "Turn", "Games", new {id = Model.GameId}, new { @class="btn"})
+  }
+  </div>
+</div>
+
+
+
