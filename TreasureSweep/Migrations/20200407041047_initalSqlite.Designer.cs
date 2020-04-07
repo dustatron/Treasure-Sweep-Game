@@ -9,15 +9,14 @@ using TreasureSweepGame.Models;
 namespace TreasureSweepGame.Migrations
 {
     [DbContext(typeof(TreasureSweepGameContext))]
-    [Migration("20200406162710_AddIdentity")]
-    partial class AddIdentity
+    [Migration("20200407041047_initalSqlite")]
+    partial class initalSqlite
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -176,6 +175,54 @@ namespace TreasureSweepGame.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("TreasureSweepGame.Models.Game", b =>
+                {
+                    b.Property<int>("GameId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("IsComplete");
+
+                    b.Property<string>("P1Board");
+
+                    b.Property<int>("P1Id");
+
+                    b.Property<string>("P2Board");
+
+                    b.Property<int>("P2Id");
+
+                    b.Property<int?>("ProfileId");
+
+                    b.Property<int>("TurnCount");
+
+                    b.Property<int>("WinningPlayer");
+
+                    b.HasKey("GameId");
+
+                    b.HasIndex("ProfileId");
+
+                    b.ToTable("Games");
+                });
+
+            modelBuilder.Entity("TreasureSweepGame.Models.Profile", b =>
+                {
+                    b.Property<int>("ProfileId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Img");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("TagLine");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("ProfileId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Profiles");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
@@ -219,6 +266,20 @@ namespace TreasureSweepGame.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TreasureSweepGame.Models.Game", b =>
+                {
+                    b.HasOne("TreasureSweepGame.Models.Profile")
+                        .WithMany("Games")
+                        .HasForeignKey("ProfileId");
+                });
+
+            modelBuilder.Entity("TreasureSweepGame.Models.Profile", b =>
+                {
+                    b.HasOne("TreasureSweepGame.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

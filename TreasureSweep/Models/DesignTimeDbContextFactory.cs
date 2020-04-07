@@ -18,7 +18,7 @@ namespace TreasureSweepGame.Models
       var builder = new DbContextOptionsBuilder<TreasureSweepGameContext>();
       var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-      builder.UseMySql(connectionString);
+      builder.UseSqlite(connectionString);
 
       return new TreasureSweepGameContext(builder.Options);
     }
