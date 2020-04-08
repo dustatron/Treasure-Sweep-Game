@@ -157,7 +157,7 @@ namespace TeasureSweepGame.Controllers
       {
         ViewBag.WinningName = playerOne.Name;
       }
-      else if (currentGame.IsComplete == true && currentGame.WinningPlayer != playerTwo.ProfileId)
+      else if (currentGame.IsComplete == true && currentGame.WinningPlayer == playerTwo.ProfileId)
       {
         ViewBag.WinningName = playerTwo.Name;
       }
