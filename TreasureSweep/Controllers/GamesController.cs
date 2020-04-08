@@ -137,21 +137,26 @@ namespace TeasureSweepGame.Controllers
       int[,] p1Board = JsonConvert.DeserializeObject<int[,]>(firstBoard);
       int[,] p2Board = JsonConvert.DeserializeObject<int[,]>(secondBoard);
 
+      Profile playerOne = _db.Profiles.FirstOrDefault(entry => entry.ProfileId == currentGame.P1Id);
+      Profile playerTwo = _db.Profiles.FirstOrDefault(entry => entry.ProfileId == currentGame.P2Id);
+
       if (currentGame.P1Id == currentProfile.ProfileId)
       {
         ViewBag.P1Board = p1Board;
         ViewBag.P2Target = Game.Scrub(p2Board);
         ViewBag.CurrentView = 1;
+        ViewBag.OpponentName = playerTwo.Name;
+        ViewBag.OpponentImg = playerTwo.Img;
       }
       else if (currentGame.P2Id == currentProfile.ProfileId)
       {
         ViewBag.P2Board = p2Board;
         ViewBag.P1Target = Game.Scrub(p1Board);
         ViewBag.CurrentView = 2;
+        ViewBag.OpponentName = playerOne.Name;
+        ViewBag.OpponentImg = playerOne.Img;
       }
 
-      Profile playerOne = _db.Profiles.FirstOrDefault(entry => entry.ProfileId == currentGame.P1Id);
-      Profile playerTwo = _db.Profiles.FirstOrDefault(entry => entry.ProfileId == currentGame.P2Id);
 
       if (currentGame.IsComplete == true && currentGame.WinningPlayer == playerOne.ProfileId)
       {
