@@ -197,7 +197,7 @@ input {
   width: 300px;
   grid-template-columns: 20% 20% 20% 20% 20%;
   grid-template-rows: 20% 20% 20% 20% 20%;
-  border: 12px outset #c3c3c3;
+  border: 12p outset #c3c3;
 }
 
 #p1board img,
@@ -405,4 +405,13 @@ li.nav-item a.nav-link:hover,
 .instructions,
 .rules {
   text-align: center;
+}
+
+button.navbar-toggler {
+  background-color: #f5f5f57e;
+  color: #111111;
+}
+
+.navbar-toggler-icon {
+  color: #111111;
 }

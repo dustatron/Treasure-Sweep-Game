@@ -24,7 +24,7 @@
                   @Html.ActionLink($"Game {game.GameId}", "Details", "Games", new { id = game.GameId}, new {@class="game-details"})
                 </span>
                 <span class="game-star">
-                  <img src="img/play.png" class="img-thumbnail" />
+                  <img src="img/play.png" class="icon" />
                 </span>
                 @if(Model.ProfileId == game.P1Id)
                 {
@@ -48,7 +48,7 @@
                   @Html.ActionLink($"Game {game.GameId}", "Details", "Games", new { id = game.GameId}, new {@class="game-details"})
                 </span>
                 <span class="game-star">
-                  <img src="img/clock.png" class="img-thumbnail" />
+                  <img src="img/clock.png" class="icon" />
                 </span>
                 @if(Model.ProfileId == game.P1Id)
                 {
@@ -72,7 +72,7 @@
                   @Html.ActionLink($"Game {game.GameId}", "Details", "Games", new { id = game.GameId}, new {@class="game-details"})
                 </span>
                 <span class="game-star">
-                  <img src="img/star.png" class="img-thumbnail" />
+                  <img src="img/star.png" class="icon" />
                 </span>
                 @if(Model.ProfileId == game.P1Id)
                 {
@@ -97,7 +97,7 @@
                   @Html.ActionLink($"Game {game.GameId}", "Details", "Games", new { id = game.GameId}, new {@class="game-details"})
                 </span>
                 <span class="game-star">
-                  <img src="img/x5.png" class="img-thumbnail lose-img" />
+                  <img src="img/x5.png" class="icon" />
                 </span>
                   @if(Model.ProfileId == game.P1Id)
                   {
