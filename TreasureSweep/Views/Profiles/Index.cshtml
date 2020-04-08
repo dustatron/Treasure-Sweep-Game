@@ -3,7 +3,9 @@
     <h1>@Model.Name</h1>
     <img src="@Model.Img" class="img-thumbnail">
     <h4>@Model.TagLine</h4>
-    <h5>User ID: @Model.ProfileId</h5>
+    <h4>User ID: @Model.ProfileId</h4>
+    <h4>Wins: @ViewBag.Wins</h4>
+    <h4>Losses: @ViewBag.Losses</h4>
     @Html.ActionLink("EDIT PROFILE", "Edit", "Profiles", new { id = Model.ProfileId }, new { @class="btn btn-info"})
   </div>
   <div class="col-md-7">

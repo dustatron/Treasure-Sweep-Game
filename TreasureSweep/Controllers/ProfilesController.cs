@@ -31,8 +31,28 @@ namespace TeasureSweepGame.Controllers
       var currentUser = await _userManager.FindByIdAsync(userId);
       try
       {
+        int wins = 0;
+        int completedGames = 0;
+
         Profile thisProfile = _db.Profiles.FirstOrDefault(profile => profile.User == currentUser);
-        thisProfile.Games = _db.Games.Where(game => game.P1Id == thisProfile.ProfileId || game.P2Id == thisProfile.ProfileId).ToList();
+        thisProfile.Games = _db.Games.Where(game => game.P1Id == thisProfile.ProfileId || game.P2Id == thisProfile.ProfileId).OrderByDescending(entry => entry.GameId).ToList();
+        if (thisProfile.Games.Count > 0)
+        {
+          foreach (Game game in thisProfile.Games)
+          {
+            if (game.IsComplete == true)
+            {
+              completedGames += 1;
+              if (thisProfile.ProfileId == game.WinningPlayer)
+              {
+                wins += 1;
+              }
+            }
+          }
+        }
+        int losses = completedGames - wins;
+        ViewBag.Losses = losses;
+        ViewBag.Wins = wins;
         ViewBag.Profiles = _db.Profiles.ToList();
         return View(thisProfile);
       }
