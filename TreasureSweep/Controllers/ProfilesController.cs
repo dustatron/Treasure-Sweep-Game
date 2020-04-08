@@ -102,13 +102,31 @@ namespace TeasureSweepGame.Controllers
     //search for profiles
     public async Task<ActionResult> Search(string playerName)
     {
-      string searchName = playerName.ToLower();
-      List<Profile> results = _db.Profiles.Where(profile => profile.Name.ToLower().Contains(playerName)).ToList();
-      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      var currentUser = await _userManager.FindByIdAsync(userId);
-      Profile thisProfile = _db.Profiles.FirstOrDefault(entry => entry.User == currentUser);
-      ViewBag.CurrentUserId = thisProfile.ProfileId;
-      return View(results);
+      try
+      {
+        if (String.IsNullOrWhiteSpace(playerName) == false)
+        {
+          string searchName = playerName.ToLower();
+          List<Profile> results = _db.Profiles.Where(profile => profile.Name.ToLower().Contains(playerName)).ToList();
+          if (results.Count == 0)
+          {
+            throw new System.InvalidOperationException("User not found");
+          }
+          var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+          var currentUser = await _userManager.FindByIdAsync(userId);
+          Profile thisProfile = _db.Profiles.FirstOrDefault(entry => entry.User == currentUser);
+          ViewBag.CurrentUserId = thisProfile.ProfileId;
+          return View(results);
+        }
+        else
+        {
+          throw new System.InvalidOperationException("User not found");
+        }
+      }
+      catch (Exception ex)
+      {
+        return View("Error", ex.Message);
+      }
     }
   }
 }
