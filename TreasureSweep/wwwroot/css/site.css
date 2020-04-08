@@ -46,6 +46,11 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
   font-family: 'Montserrat', sans-serif;
+  background-image: url('https://images.pexels.com/photos/5412/water-blue-ocean.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  color: #f5f5f5;
 }
 
 .footer {
@@ -63,7 +68,7 @@ body {
 
 h4 {
   text-align: center;
-  color: #111111;
+  color: #f5f5f5;
   font-family: 'VT323', monospace;
 }
 
@@ -71,10 +76,7 @@ h1 {
   font-family: 'VT323', monospace;
   text-align: center;
   font-size: 4em;
-  font-weight: bolder;
-  color: #c5330e;
-  -webkit-text-stroke-width: 0.5px;
-  -webkit-text-stroke-color: #111111;
+  color: #f5f5f5;
 }
 
 h2 {
@@ -83,6 +85,8 @@ h2 {
 }
 
 .btn {
+  font-family: 'VT323', monospace;
+  font-size: 1.5em;
   border: 1px solid #111111;
   border-radius: 10%;
   width: 40%;
@@ -93,13 +97,15 @@ h2 {
 }
 
 .btn:hover {
-  background-color: #36454f86;
+  background-color: #072c44b2;
   color: #f5f5f5;
-  border: 1px solid #36454f86;
+  border: 1px solid #072c44b2;
   text-decoration: none;
 }
 
 .btn-block {
+  font-family: 'VT323', monospace;
+  font-size: 1.5em;
   border: 1px solid #111111;
   border-radius: 10%;
   background-color: #f5f5f5ad;
@@ -110,9 +116,9 @@ h2 {
 }
 
 .btn-block:hover {
-  background-color: #36454f86;
+  background-color: #072c44b2;
   color: #f5f5f5;
-  border: 1px solid #36454f86;
+  border: 1px solid #072c44b2;
   text-decoration: none;
 }
 
@@ -144,12 +150,9 @@ p {
 
 p a {
   color: #111111;
-  -webkit-text-stroke-width: 0.1px;
-  -webkit-text-stroke-color: #111111;
 }
 
 p a:hover {
-  -webkit-text-stroke-color: rgb(27, 87, 136);
   text-decoration: none;
 }
 
@@ -165,7 +168,8 @@ select {
 input {
   display: block;
   width: 100%;
-  border: 1px solid #111111;
+  border: 1px solid #f5f5f5;
+  color: #f5f5f5;
   border-radius: 10%;
   background-color: transparent;
   outline: none;
@@ -182,6 +186,7 @@ input {
   width: 500px;
   grid-template-columns: 20% 20% 20% 20% 20%;
   grid-template-rows: 20% 20% 20% 20% 20%;
+  border: 12px outset #c3c3c3;
 }
 
 #p1board,
@@ -191,7 +196,8 @@ input {
   height: 300px;
   width: 300px;
   grid-template-columns: 20% 20% 20% 20% 20%;
-  grid-templa: 20% 2 % 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  border: 12px outset #c3c3c3;
 }
 
 #p1board img,
@@ -218,6 +224,19 @@ input {
   cursor: grab;
 }
 
+img.profile-pic {
+  height: 300px;
+  width: auto;
+  margin-bottom: 2%;
+  border-radius: 10px;
+}
+
+img.profile-img {
+  width: 350px;
+  height: auto;
+  border-radius: 10px;
+}
+
 .activeTurn {
   background-color: #bcffb7;
 }
@@ -233,12 +252,6 @@ input {
   align-items: center;
 }
 
-.redX {
-  font-size: 20px;
-  color: red;
-  font-weight: bold;
-}
-
 .noBold {
   font-weight: normal;
 }
@@ -251,6 +264,8 @@ input {
   width: 50%;
   padding: 20px;
   margin: auto;
+  background-color: #ddd;
+  color: black;
 }
 
 .profileThumbnail {
@@ -287,6 +302,95 @@ input {
 }
 
 ul.list-group {
-  height: 75vh;
+  max-height: 75vh;
   overflow-y: scroll;
+}
+
+ul.list-group a,
+ul.list-group a:hover {
+  color: #111111;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd3d;
+}
+
+table {
+  border-collapse: collapse;
+  width: 75%;
+  margin: auto;
+}
+
+.editProfile {
+  margin-bottom: 2rem;
+}
+
+a.addGameButton {
+  margin: 0;
+  width: 100%;
+  font-family: 'VT323', monospace;
+  font-size: 1.5em;
+  border: 1px solid #111111;
+  border-radius: 10%;
+  background-color: #f5f5f5ad;
+  color: #111111;
+  padding: 1%;
+  margin-bottom: 2%;
+}
+
+a.addGameButton:hover {
+  background-color: #072c44b2;
+  color: #f5f5f5;
+  border: 1px solid #072c44b2;
+  text-decoration: none;
+}
+
+h1.beach-header {
+  font-size: 3em;
+}
+
+.opponentDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  color: #f5f5f5;
+  width: 300px;
+  margin: auto;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.opponentDiv img {
+  width: 60px;
+  height: auto;
+  margin: 0.8rem;
+  border: 1px solid #f5f5f5;
+  border-radius: 5px;
+  padding: 0.4rem;
+}
+
+.opponentDiv h2 {
+  font-size: 60px;
+}
+
+nav a,
+li.nav-item a.nav-link,
+#logout-btn {
+  color: #f5f5f5;
+  font-size: 1.5em;
+}
+
+nav a:hover,
+li.nav-item a.nav-link:hover,
+#logout-btn:hover {
+  color: #c45b05;
 }

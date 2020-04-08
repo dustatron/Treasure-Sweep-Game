@@ -1,0 +1,67 @@
+/* //////////////  GAME BOARD \\\\\\\\\\\\\\\\\\ */
+
+.game-id {
+  text-align: right;
+  display: inline-block;
+  width: 25%;
+  font-weight: 900;
+  margin-right: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-right: 1px dashed rgba(36, 36, 36, 0.57);
+}
+
+/* .game-details {
+  display: block;
+  width: 100%;
+} */
+
+.top {
+  border-bottom: 1px dashed gray;
+}
+
+.game-playing {
+  /* display: inline-block; */
+  width: 55%;
+  /* padding: auto 5px; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: black;
+}
+
+.game-board {
+  display: inline-block;
+  text-align: right;
+}
+
+.game-star {
+  display: inline-block;
+  width: 5%;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.redX {
+  margin: auto;
+  text-align: center;
+  font-size: 24px;
+  color: red;
+  font-weight: bold;
+}
+
+.img-thumbnail {
+  width: 100%;
+}
+
+.light-gold {
+  background-color: rgb(240, 236, 178);
+}
+
+.light-red {
+  background-color: rgb(238, 192, 192);
+}
+
+.bg-transparent {
+  background-color: rgba(255, 255, 255, 0);
+}
