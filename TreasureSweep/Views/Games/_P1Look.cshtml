@@ -1,4 +1,4 @@
-<h1> YOUR BOARD: </h1>
+<h1 class="beach-header"> OPPONENT'S PROGRESS </h1>
 <div id="p1board">
   @for (int x = 0; x <= 4 ; x++)
   {
@@ -30,4 +30,8 @@
       }
     }   
   }
+</div>
+<div class="opponentDiv">
+  <img src="@ViewBag.OpponentImg" />
+  <h2>@ViewBag.OpponentName</h2>
 </div>
