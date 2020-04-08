@@ -20,12 +20,12 @@
   <div class="col-md-6 offset-3 text-center">
   @if(Model.TurnCount % 2 == 1 && Model.IsComplete == false)
   {
-    <h4>Player Two's Turn!</h4>
+    <h4>@ViewBag.PlayerTwo.Name's Turn!</h4>
     @Html.ActionLink("Play Turn", "Turn", "Games", new {id = Model.GameId}, new { @class="btn"})
   }
   else if (Model.IsComplete == false)
   {
-    <h4>Player One's Turn!</h4>
+    <h4>@ViewBag.PlayerOne.Name's Turn!</h4>
     @Html.ActionLink("Play Turn", "Turn", "Games", new {id = Model.GameId}, new { @class="btn"})
   }
   else
