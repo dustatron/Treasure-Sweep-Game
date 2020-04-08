@@ -9,8 +9,8 @@
     <input type="hidden" value="@ViewBag.ProfileId" name="P1Id" id="P1Id">
     <input type="hidden" value="@ViewBag.ProfileId" name="CurrentPlayer" id="CurrentPlayer">
     <br>
-    <label for="P2Id">SECOND PLAYER ID NUMBER:</label>
-    @Html.TextBoxFor(model => model.P2Id, new {@placeholder = "add your friend's user ID"})
+    <h4 for="P2Id">SECOND PLAYER ID NUMBER:</h4>
+    @Html.TextBoxFor(model => model.P2Id)
     <br>
     <button type="submit" class="btn-block">START NEW GAME</button>
   }
