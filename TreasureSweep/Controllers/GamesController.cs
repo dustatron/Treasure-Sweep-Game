@@ -150,14 +150,16 @@ namespace TeasureSweepGame.Controllers
         ViewBag.CurrentView = 2;
       }
 
-      if (currentGame.IsComplete == true && currentGame.WinningPlayer == currentProfile.ProfileId)
+      Profile playerOne = _db.Profiles.FirstOrDefault(entry => entry.ProfileId == currentGame.P1Id);
+      Profile playerTwo = _db.Profiles.FirstOrDefault(entry => entry.ProfileId == currentGame.P2Id);
+
+      if (currentGame.IsComplete == true && currentGame.WinningPlayer == playerOne.ProfileId)
       {
-        ViewBag.WinningName = currentProfile.Name;
+        ViewBag.WinningName = playerOne.Name;
       }
-      else if (currentGame.IsComplete == true && currentGame.WinningPlayer != currentProfile.ProfileId)
+      else if (currentGame.IsComplete == true && currentGame.WinningPlayer != playerTwo.ProfileId)
       {
-        Profile otherProfile = _db.Profiles.FirstOrDefault(entry => entry.ProfileId == currentGame.P2Id);
-        ViewBag.WinningName = otherProfile.Name;
+        ViewBag.WinningName = playerTwo.Name;
       }
 
       if ((currentGame.TurnCount % 2 == 1 && currentGame.P1Id == currentProfile.ProfileId) || (currentGame.TurnCount % 2 == 0 && currentGame.P2Id == currentProfile.ProfileId))
