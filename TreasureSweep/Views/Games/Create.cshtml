@@ -9,18 +9,18 @@
     <input type="hidden" value="@ViewBag.ProfileId" name="P1Id" id="P1Id">
     <input type="hidden" value="@ViewBag.ProfileId" name="CurrentPlayer" id="CurrentPlayer">
     <br>
-    <label for="P2Id">Second player ID number:</label>
+    <label for="P2Id">SECOND PLAYER ID NUMBER:</label>
     @Html.TextBoxFor(model => model.P2Id, new {@placeholder = "add your friend's user ID"})
     <br>
-    <input type="submit" value="START NEW GAME" class="btn-block" />
+    <button type="submit" class="btn-block">START NEW GAME</button>
   }
 <hr>
   <div class="playerSearchDiv text-center">
-    <h3>Search for Friend's ID</h3>
+    <h4>SEARCH FOR FRIEND BY NAME</h4>
     @using(Html.BeginForm("Search", "Profiles"))
     {
       <input type="text" name="playerName" id="playerName">
-      <button type="submit" class="btn">Search for Friend</button>
+      <button type="submit" class="btn-block">SEARCH FOR FRIEND</button>
     }
   </div>
 </div>
