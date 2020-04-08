@@ -12,3 +12,8 @@
 6. Deploy
 7. Emailer
 8. shovel cursor for hover over opponent game board --complete
+
+9. sort games by latest play.
+    9a. at latest updated. DateTime.Now
+
+10. change treasur count to 5

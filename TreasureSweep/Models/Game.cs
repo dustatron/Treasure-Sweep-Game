@@ -33,7 +33,7 @@ namespace TreasureSweepGame.Models
 
     public static string generateBoard()
     {
-      int numberOfTreasures = 7;
+      int numberOfTreasures = 5;
 
       //Generate empty board
       int[,] board = new int[5, 5];
@@ -159,7 +159,7 @@ namespace TreasureSweepGame.Models
           }
         }
       }
-      if (hitCount >= 7)
+      if (hitCount >= 5)
       {
         return true;
       }
