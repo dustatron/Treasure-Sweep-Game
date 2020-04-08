@@ -2,7 +2,15 @@
 @using System.Collections.Generic;
 <h1>LEADERBOARD</h1>
 <h2>ORDERED BY PERCENTAGE OF GAMES WON</h2>
+<table>
+  <tr>
+    <th>USERNAME</th>
+    <th>WINS/GAMES COMPLETED</th>
+  </tr>
 @foreach(KeyValuePair<string, int> leader in Model)
 {
-  <h4>@leader.Key: @leader.Value%</h4>
+  <tr>
+    <td>@leader.Key</td>
+    <td>@leader.Value%</td>
+  </tr>
 }
