@@ -1,19 +1,28 @@
-1.ReadMe
+*1.ReadMe
   -- mostly complete; add finishing touches
-2. Game Details / State
-  2a. visual cue of active turns. --mostly complete
-3.Invite System
-  3a. Friends List
-  3b. messaging
-  3c. Search users -- complete
-4. Profile/Account Look and Feel
-5. Leaderboard -- complete
-  5a. public games / allow strangers to play together
-6. Deploy
-7. Emailer
-8. shovel cursor for hover over opponent game board --complete
+*2. Game Details / State
+  *2a. visual cue of active turns. --mostly complete
+    2b. list of games look and feel
 
-9. sort games by latest play.
+* 3.Invite System
+    3a. Friends List
+    3b. messaging
+    *3c. Search users -- complete
+
+* 4. Profile/Account Look and Feel
+
+* 5. Leaderboard -- complete
+      5a. public games / allow strangers to play together. (maybe a hold user)
+
+6. Deploy
+
+7. Emailer
+
+* 8. shovel cursor for hover over opponent game board --complete
+
+! 9. sort games by latest play.
     9a. at latest updated. DateTime.Now
 
-10. change treasur count to 5
+* 10. change treasure count to 5
+
+11. win state bug in board view

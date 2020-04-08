@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TreasureSweepGame.Models;
 
 namespace TreasureSweepGame.Migrations
 {
     [DbContext(typeof(TreasureSweepGameContext))]
-    partial class TreasureSweepGameContextModelSnapshot : ModelSnapshot
+    [Migration("20200408153532_AddDateTimeLastPlayedToGameModel")]
+    partial class AddDateTimeLastPlayedToGameModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -35,7 +35,7 @@ namespace TeasureSweepGame.Controllers
         int completedGames = 0;
 
         Profile thisProfile = _db.Profiles.FirstOrDefault(profile => profile.User == currentUser);
-        thisProfile.Games = _db.Games.Where(game => game.P1Id == thisProfile.ProfileId || game.P2Id == thisProfile.ProfileId).OrderByDescending(entry => entry.GameId).ToList();
+        thisProfile.Games = _db.Games.Where(game => game.P1Id == thisProfile.ProfileId || game.P2Id == thisProfile.ProfileId).OrderByDescending(entry => entry.LastPlayed).ToList();
         if (thisProfile.Games.Count > 0)
         {
           foreach (Game game in thisProfile.Games)

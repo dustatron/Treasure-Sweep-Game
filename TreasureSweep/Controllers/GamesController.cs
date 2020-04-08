@@ -72,10 +72,12 @@ namespace TeasureSweepGame.Controllers
     [HttpPost]
     public ActionResult Create(Game game)
     {
+      DateTime now = DateTime.Now;
       try
       {
         Profile playerTwo = _db.Profiles.FirstOrDefault(profile => profile.ProfileId == game.P2Id);
         Profile playerOne = _db.Profiles.FirstOrDefault(profile => profile.ProfileId == game.P1Id);
+        game.LastPlayed = now;
 
         if (playerTwo != null && game.P1Id != game.P2Id)
         {
