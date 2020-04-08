@@ -16,6 +16,7 @@ namespace TreasureSweepGame.Models
     public int WinningPlayer { get; set; }
     public string P1Board { get; set; }
     public string P2Board { get; set; }
+    public DateTime LastPlayed { get; set; }
 
     public Game()
     {
@@ -118,6 +119,8 @@ namespace TreasureSweepGame.Models
           this.IsComplete = true;
           this.WinningPlayer = this.P1Id;
         }
+        DateTime now = DateTime.Now;
+        this.LastPlayed = now;
         return p2Board;
       }
       else
@@ -142,6 +145,8 @@ namespace TreasureSweepGame.Models
           this.IsComplete = true;
           this.WinningPlayer = this.P2Id;
         }
+        DateTime now = DateTime.Now;
+        this.LastPlayed = now;
         return p1Board;
       }
     }

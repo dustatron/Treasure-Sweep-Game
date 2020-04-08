@@ -72,10 +72,12 @@ namespace TeasureSweepGame.Controllers
     [HttpPost]
     public ActionResult Create(Game game)
     {
+      DateTime now = DateTime.Now;
       try
       {
         Profile playerTwo = _db.Profiles.FirstOrDefault(profile => profile.ProfileId == game.P2Id);
         Profile playerOne = _db.Profiles.FirstOrDefault(profile => profile.ProfileId == game.P1Id);
+        game.LastPlayed = now;
 
         if (playerTwo != null && game.P1Id != game.P2Id)
         {
@@ -135,27 +137,34 @@ namespace TeasureSweepGame.Controllers
       int[,] p1Board = JsonConvert.DeserializeObject<int[,]>(firstBoard);
       int[,] p2Board = JsonConvert.DeserializeObject<int[,]>(secondBoard);
 
+      Profile playerOne = _db.Profiles.FirstOrDefault(entry => entry.ProfileId == currentGame.P1Id);
+      Profile playerTwo = _db.Profiles.FirstOrDefault(entry => entry.ProfileId == currentGame.P2Id);
+
       if (currentGame.P1Id == currentProfile.ProfileId)
       {
         ViewBag.P1Board = p1Board;
         ViewBag.P2Target = Game.Scrub(p2Board);
         ViewBag.CurrentView = 1;
+        ViewBag.OpponentName = playerTwo.Name;
+        ViewBag.OpponentImg = playerTwo.Img;
       }
       else if (currentGame.P2Id == currentProfile.ProfileId)
       {
         ViewBag.P2Board = p2Board;
         ViewBag.P1Target = Game.Scrub(p1Board);
         ViewBag.CurrentView = 2;
+        ViewBag.OpponentName = playerOne.Name;
+        ViewBag.OpponentImg = playerOne.Img;
       }
 
-      if (currentGame.IsComplete == true && currentGame.WinningPlayer == currentProfile.ProfileId)
+
+      if (currentGame.IsComplete == true && currentGame.WinningPlayer == playerOne.ProfileId)
       {
-        ViewBag.WinningName = currentProfile.Name;
+        ViewBag.WinningName = playerOne.Name;
       }
-      else if (currentGame.IsComplete == true && currentGame.WinningPlayer != currentProfile.ProfileId)
+      else if (currentGame.IsComplete == true && currentGame.WinningPlayer == playerTwo.ProfileId)
       {
-        Profile otherProfile = _db.Profiles.FirstOrDefault(entry => entry.ProfileId == currentGame.P2Id);
-        ViewBag.WinningName = otherProfile.Name;
+        ViewBag.WinningName = playerTwo.Name;
       }
 
       if ((currentGame.TurnCount % 2 == 1 && currentGame.P1Id == currentProfile.ProfileId) || (currentGame.TurnCount % 2 == 0 && currentGame.P2Id == currentProfile.ProfileId))

@@ -1,4 +1,4 @@
-# Treasure Sweep Gme
+# Treasure Sweep Game
 
 #### _C# .NET Team Week for Epicodus_
 
@@ -22,7 +22,10 @@ _This application allows users to play Treasure Sweep, a battleship-esque game f
 * Turns alternate between player one and player two until a game ending condition is met. Game ending conditions include:
   - the first player to uncover all treasure chests on the other player's beach wins
   - a player who digs up a bomb loses
+* The Games Turn view automatically refreshes, in case the user does not refresh the page to recognize that it is their turn to play.
 * When a game is over, neither player is permitted to take another turn.
+* The application includes a leaderboard displaying, for all players who have completed at least one game, the players' win percentage (wins/completed games).
+* In a user's profile, all games associated with the user are sorted in descending order by the date/time of the most recent turn.
 
 ## Project Concept:
 _We defined our minimum viable product (MVP) as an application that allows a user to:_

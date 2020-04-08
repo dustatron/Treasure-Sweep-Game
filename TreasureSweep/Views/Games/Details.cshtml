@@ -6,12 +6,12 @@
 <div class="row">
   <div class="col-md-6 text-center">
     <h4>Player 1: @ViewBag.PlayerOne.Name</h4>
-    <img src="@ViewBag.PlayerOne.Img" alt="" class="img-thumbnail">
+    <img src="@ViewBag.PlayerOne.Img" alt="" class="profile-pic">
   </div>
 
   <div class="col-md-6 text-center">
     <h4>Player 2: @ViewBag.PlayerTwo.Name</h4>
-    <img src="@ViewBag.PlayerTwo.Img" alt="" class="img-thumbnail">
+    <img src="@ViewBag.PlayerTwo.Img" alt="" class="profile-pic">
   </div>
 </div>
 
@@ -20,12 +20,12 @@
   <div class="col-md-6 offset-3 text-center">
   @if(Model.TurnCount % 2 == 1 && Model.IsComplete == false)
   {
-    <h3>Player Two's Turn!</h3>
+    <h4>@ViewBag.PlayerTwo.Name's Turn!</h4>
     @Html.ActionLink("Play Turn", "Turn", "Games", new {id = Model.GameId}, new { @class="btn"})
   }
   else if (Model.IsComplete == false)
   {
-    <h3>Player One's Turn!</h3>
+    <h4>@ViewBag.PlayerOne.Name's Turn!</h4>
     @Html.ActionLink("Play Turn", "Turn", "Games", new {id = Model.GameId}, new { @class="btn"})
   }
   else
