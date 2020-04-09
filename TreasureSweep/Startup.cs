@@ -38,20 +38,10 @@ namespace TreasureSweepGame
         options.MinimumSameSitePolicy = SameSiteMode.None;
       });
 
-      // const string connectionString = @"Data Source=treasuresweep.db;";
       const string connectionString = @"Data Source=treasuresweep.db";
       var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
-      // services.AddEntityFrameworkSqlite()
-      //   .AddDbContext<TreasureSweepGameContext>(options => options
-      //   .UseSqlite(connectionString));
-
-      // services.AddEntityFrameworkSqlite()
-      //   .AddDbContext<TreasureSweepGameContext>(options => options
-      //   .UseSqlite(Configuration.GetConnectionString("DefaultConnection")
-      //   ));
 
       services.AddDbContext<TreasureSweepGameContext>(builder =>
                 builder.UseSqlite(Configuration["ConnectionStrings:DefaultConnection"], sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)));
