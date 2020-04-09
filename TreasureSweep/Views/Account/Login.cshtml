@@ -1,19 +1,23 @@
 @using TreasureSweepGame.ViewModels
 
 @model LoginViewModel
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <h1>LOG IN TO YOUR ACCOUNT</h1>
+    <hr />
+    @using (Html.BeginForm())
+    {
+      @Html.LabelFor(m => m.Email)
+      @Html.TextBoxFor(m => m.Email)
+      <br>
+      @Html.LabelFor(m => m.Password)
+      @Html.PasswordFor(m => m.Password)
+      <br>
+      <input type="submit" value="LOG IN" class="btn-block" />
+    }
+    <br>
+    <h4>ARE YOU A NEW USER?</h4>
+    @Html.ActionLink("REGISTER", "Register", "Account", null, new { @class="btn-block" })
 
-<h1>LOG IN TO YOUR ACCOUNT</h1>
-<hr />
-@using (Html.BeginForm())
-{
-  @Html.LabelFor(m => m.Email)
-  @Html.TextBoxFor(m => m.Email)
-  <br>
-  @Html.LabelFor(m => m.Password)
-  @Html.PasswordFor(m => m.Password)
-  <br>
-  <input type="submit" value="LOG IN" class="btn-block" />
-}
-<br>
-<h4>ARE YOU A NEW USER?</h4>
-@Html.ActionLink("REGISTER", "Register", "Account", null, new { @class="btn-block" })
+  </div>
+</div>

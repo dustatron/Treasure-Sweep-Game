@@ -25,8 +25,12 @@ namespace TreasureSweepGame.Controllers
       return View();
     }
 
-    public IActionResult Register()
+    public IActionResult Register(string message)
     {
+      if (message != null)
+      {
+        ViewBag.Message = message;
+      }
       return View();
     }
 
@@ -49,7 +53,8 @@ namespace TreasureSweepGame.Controllers
           }
           else
           {
-            return View();
+            string message = "Registration unsuccessful. Please try again.";
+            return View("Register", new { message = message });
           }
         }
       }
@@ -72,7 +77,7 @@ namespace TreasureSweepGame.Controllers
         Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
         if (result.Succeeded)
         {
-          return RedirectToAction("Index", "Profiles");
+          return RedirectToAction("Details", "Profiles");
         }
         else
         {

@@ -4,6 +4,8 @@
 
 <div class="col-md-6 offset-md-3">
   <h1>CREATE GAME</h1>
+  @Html.ActionLink("SHOW ALL PLAYERS", "Index", "Profiles", null, new { @class="btn-block"})
+  <hr />
   @using (Html.BeginForm())
   {
     <input type="hidden" value="@ViewBag.ProfileId" name="P1Id" id="P1Id">
@@ -14,7 +16,7 @@
     <br>
     <button type="submit" class="btn-block">START NEW GAME</button>
   }
-<hr>
+  <hr />
   <div class="playerSearchDiv text-center">
     <h4>SEARCH FOR FRIEND BY NAME</h4>
     @using(Html.BeginForm("Search", "Profiles"))

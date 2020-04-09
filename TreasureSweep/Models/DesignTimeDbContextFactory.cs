@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
+// using AspNet.Identity.SQLite;
 using System.IO;
 
 namespace TreasureSweepGame.Models
@@ -18,7 +19,7 @@ namespace TreasureSweepGame.Models
       var builder = new DbContextOptionsBuilder<TreasureSweepGameContext>();
       var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-      builder.UseMySql(connectionString);
+      builder.UseSqlite(connectionString);
 
       return new TreasureSweepGameContext(builder.Options);
     }

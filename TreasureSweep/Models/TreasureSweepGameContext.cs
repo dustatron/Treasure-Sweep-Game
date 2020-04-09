@@ -8,5 +8,7 @@ namespace TreasureSweepGame.Models
     public DbSet<Profile> Profiles { get; set; }
     public DbSet<Game> Games { get; set; }
     public TreasureSweepGameContext(DbContextOptions options) : base(options) { }
+
+
   }
 }

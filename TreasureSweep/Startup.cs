@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TreasureSweepGame.Models;
+using System.Reflection;
 
 namespace TreasureSweepGame
 {
@@ -37,16 +38,17 @@ namespace TreasureSweepGame
         options.MinimumSameSitePolicy = SameSiteMode.None;
       });
 
+      // const string connectionString = @"Data Source=treasuresweep.db";
+      var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-      services.AddEntityFrameworkMySql()
-        .AddDbContext<TreasureSweepGameContext>(options => options
-        .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
+      services.AddDbContext<TreasureSweepGameContext>(builder =>
+                builder.UseSqlite(Configuration["ConnectionStrings:DefaultConnection"], sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)));
 
-      services.AddIdentity<ApplicationUser, IdentityRole>()
-        .AddEntityFrameworkStores<TreasureSweepGameContext>()
-        .AddDefaultTokenProviders();
+      services.AddDefaultIdentity<ApplicationUser>()
+                      .AddRoles<IdentityRole>()
+                      .AddEntityFrameworkStores<TreasureSweepGameContext>();
 
       services.Configure<IdentityOptions>(options =>
       {
@@ -70,6 +72,10 @@ namespace TreasureSweepGame
         app.UseExceptionHandler("/Home/Error");
         app.UseHsts();
       }
+
+      // InitializeDbTestData(app);
+
+      // app.UseIdentityServer();
 
       //   app.UseHttpsRedirection();
       app.UseStaticFiles();

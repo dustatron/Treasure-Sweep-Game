@@ -1,18 +1,15 @@
-*1.ReadMe
-  -- mostly complete; add finishing touches
-
 * 3.Invite System
     3a. Friends List
     3b. messaging
 
 * 5a. public games / allow strangers to play together. (maybe a hold user)
 
-6. Deploy
-
 7. Emailer
 
 
 COMPLETED: 
+
+* README
 
 *2. Game Details / State -- complete
   *2a. visual cue of active turns. -- complete
@@ -23,6 +20,8 @@ COMPLETED:
 * 4. Profile/Account Look and Feel -- complete
 
 * 5. Leaderboard -- complete 
+
+* 6. Deploy -- complete, on Heroku
 
 * 8. shovel cursor for hover over opponent game board --complete
 

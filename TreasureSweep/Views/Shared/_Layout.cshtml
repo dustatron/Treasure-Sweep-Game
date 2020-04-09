@@ -36,9 +36,13 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Games" asp-action="Index">Leader Board</a>
                         </li>
+
+                        @if(User.Identity.IsAuthenticated)
+                        {
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Profiles" asp-action="Index">Your Games</a>
+                            <a class="nav-link" asp-area="" asp-controller="Profiles" asp-action="Details">Your Games</a>
                         </li>
+                        }
                     </ul>
                     <ul class="nav navbar-nav ml-auto">
                         <partial name="_LoginPartial" />

@@ -25,7 +25,18 @@ namespace TeasureSweepGame.Controllers
       _userManager = userManager;
     }
 
+    [AllowAnonymous]
     public async Task<ActionResult> Index()
+    {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      List<Profile> results = _db.Profiles.ToList();
+      Profile thisProfile = _db.Profiles.FirstOrDefault(entry => entry.User == currentUser);
+      ViewBag.CurrentUserId = thisProfile.ProfileId;
+      return View(results);
+    }
+
+    public async Task<ActionResult> Details()
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
@@ -81,9 +92,13 @@ namespace TeasureSweepGame.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-    public ActionResult Edit(int id)
+    public ActionResult Edit(int id, string message)
     {
       Profile thisProfile = _db.Profiles.FirstOrDefault(profile => profile.ProfileId == id);
+      if (message != null)
+      {
+        ViewBag.Message = message;
+      }
       return View(thisProfile);
     }
 
@@ -96,7 +111,7 @@ namespace TeasureSweepGame.Controllers
       }
       _db.Entry(profile).State = EntityState.Modified;
       _db.SaveChanges();
-      return RedirectToAction("Index");
+      return RedirectToAction("Details");
     }
 
     //search for profiles
