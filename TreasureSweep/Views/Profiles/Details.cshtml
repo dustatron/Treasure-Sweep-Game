@@ -77,13 +77,13 @@
                 @if(Model.ProfileId == game.P1Id)
                 {
                   <span class="game-playing">
-                     @Html.ActionLink($"You Beat {game.P2Name }!", "Turn", "Games", new {id = game.GameId }, new {@class="game-details"})
+                     @Html.ActionLink($"You beat {game.P2Name }!", "Turn", "Games", new {id = game.GameId }, new {@class="game-details"})
                   </span>
                 }
                 else
                 {
                   <span class="game-playing">
-                     @Html.ActionLink($"You Beat {game.P1Name }!", "Turn", "Games", new {id = game.GameId }, new {@class="game-details"})
+                     @Html.ActionLink($"You beat {game.P1Name }!", "Turn", "Games", new {id = game.GameId }, new {@class="game-details"})
                   </span>
                 }
               </li>
@@ -102,13 +102,13 @@
                   @if(Model.ProfileId == game.P1Id)
                   {
                     <span class="game-playing">
-                      @Html.ActionLink($"You Lost to {game.P2Name }!", "Turn", "Games", new {id = game.GameId }, new {@class="game-details"})
+                      @Html.ActionLink($"You lost to {game.P2Name }!", "Turn", "Games", new {id = game.GameId }, new {@class="game-details"})
                     </span>
                   }
                   else
                   {
                     <span class="game-playing">
-                      @Html.ActionLink($"You Lost to {game.P1Name }!", "Turn", "Games", new {id = game.GameId }, new {@class="game-details"})
+                      @Html.ActionLink($"You lost to {game.P1Name }!", "Turn", "Games", new {id = game.GameId }, new {@class="game-details"})
                     </span>
                   }
               </li>
