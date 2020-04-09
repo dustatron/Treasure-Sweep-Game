@@ -40,9 +40,13 @@ namespace TreasureSweepGame
 
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-      services.AddEntityFrameworkMySql()
+      // services.AddEntityFrameworkMySql()
+      //   .AddDbContext<TreasureSweepGameContext>(options => options
+      //   .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
+      services.AddEntityFrameworkSqlite()
         .AddDbContext<TreasureSweepGameContext>(options => options
-        .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
+        .UseSqlite(Configuration.GetConnectionString("DefaultConnection")
+        ));
 
       services.AddIdentity<ApplicationUser, IdentityRole>()
         .AddEntityFrameworkStores<TreasureSweepGameContext>()
