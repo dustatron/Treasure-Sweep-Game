@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
+// using AspNet.Identity.SQLite;
+
 using System.IO;
 
 namespace TreasureSweepGame.Models

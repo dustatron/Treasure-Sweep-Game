@@ -9,8 +9,8 @@ using TreasureSweepGame.Models;
 namespace TreasureSweepGame.Migrations
 {
     [DbContext(typeof(TreasureSweepGameContext))]
-    [Migration("20200409050755_SwitchToSqlite")]
-    partial class SwitchToSqlite
+    [Migration("20200409072119_InitialSqlite")]
+    partial class InitialSqlite
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
