@@ -1,0 +1,417 @@
+﻿a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  font-family: 'Montserrat', sans-serif;
+  background-image: url('https://images.pexels.com/photos/5412/water-blue-ocean.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  color: #f5f5f5;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px;
+  /* Vertically center the text there */
+}
+
+/* start of custom styles */
+
+h4 {
+  text-align: center;
+  color: #f5f5f5;
+  font-family: 'VT323', monospace;
+}
+
+h1 {
+  font-family: 'VT323', monospace;
+  text-align: center;
+  font-size: 4em;
+  color: #f5f5f5;
+}
+
+h2 {
+  text-align: center;
+  font-family: 'VT323', monospace;
+}
+
+.btn {
+  font-family: 'VT323', monospace;
+  font-size: 1.5em;
+  border: 1px solid #111111;
+  border-radius: 10%;
+  width: 40%;
+  background-color: #f5f5f5ad;
+  color: #111111;
+  margin-top: 2%;
+  padding: 1%;
+}
+
+.btn:hover {
+  background-color: #072c44b2;
+  color: #f5f5f5;
+  border: 1px solid #072c44b2;
+  text-decoration: none;
+}
+
+.btn-block {
+  font-family: 'VT323', monospace;
+  font-size: 1.5em;
+  border: 1px solid #111111;
+  border-radius: 10%;
+  background-color: #f5f5f5ad;
+  text-align: center;
+  color: #111111;
+  margin-top: 2%;
+  padding: 1%;
+}
+
+.btn-block:hover {
+  background-color: #072c44b2;
+  color: #f5f5f5;
+  border: 1px solid #072c44b2;
+  text-decoration: none;
+}
+
+.two-buttons,
+.three-buttons {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.two-buttons a {
+  width: 45%;
+}
+
+.three-buttons a {
+  width: 30%;
+}
+
+p {
+  text-align: center;
+  font-size: medium;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+p {
+  text-align: center;
+}
+
+p a {
+  color: #111111;
+}
+
+p a:hover {
+  text-decoration: none;
+}
+
+label {
+  display: block;
+  width: 100%;
+}
+
+select {
+  height: 2.75em;
+}
+
+input {
+  display: block;
+  width: 100%;
+  border: 1px solid #f5f5f5;
+  color: #f5f5f5;
+  border-radius: 10%;
+  background-color: transparent;
+  outline: none;
+  box-shadow: none;
+  margin-bottom: 1%;
+  padding: 1%;
+}
+
+#p1target,
+#p2target {
+  margin: auto auto;
+  display: grid;
+  height: 500px;
+  width: 500px;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  border: 12px outset #c3c3c3;
+}
+
+#p1board,
+#p2board {
+  margin: auto auto;
+  display: grid;
+  height: 300px;
+  width: 300px;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  border: 12p outset #c3c3;
+}
+
+#p1board img,
+#p2board img,
+#p1target img,
+#p2target img {
+  width: 100%;
+  height: 100%;
+}
+
+#p1target button.sand,
+#p2target button.sand {
+  background-image: url('/img/sand.png');
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  transition: all .09s;
+}
+
+#p1target button.sand:hover,
+#p2target button.sand:hover {
+  background-image: url('/img/sand-dark.png');
+  cursor: grab;
+}
+
+img.profile-pic {
+  height: 300px;
+  width: auto;
+  margin-bottom: 2%;
+  border-radius: 10px;
+}
+
+img.profile-img {
+  width: 350px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.activeTurn {
+  background-color: #bcffb7;
+}
+
+.game img {
+  height: 30px;
+  width: auto;
+}
+
+.gameRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.noBold {
+  font-weight: normal;
+}
+
+.playerDiv {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #111111;
+  border-radius: 10px;
+  width: 50%;
+  padding: 20px;
+  margin: auto;
+  background-color: #f5f5f55e;
+  color: #111111;
+}
+
+.profileThumbnail {
+  height: 120px;
+  width: auto;
+  margin: 20px, 20px, 0, 0;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.playerDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.playerDetails p {
+  margin: 0, 20px;
+}
+
+#logout-btn {
+  border: none;
+  font-weight: 900;
+  padding-top: 7px;
+  margin: 0;
+}
+
+.challenge {
+  height: 120px;
+  padding: 10px;
+  background-color: #f88d8d;
+  margin: 0, 0, 0, 20px;
+}
+
+ul.list-group {
+  max-height: 75vh;
+  overflow-y: scroll;
+}
+
+ul.list-group a,
+ul.list-group a:hover {
+  color: #111111;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd3d;
+}
+
+table {
+  border-collapse: collapse;
+  width: 75%;
+  margin: auto;
+}
+
+.editProfile {
+  margin-bottom: 2rem;
+}
+
+a.addGameButton {
+  margin: 0;
+  width: 100%;
+  font-family: 'VT323', monospace;
+  font-size: 1.5em;
+  border: 1px solid #111111;
+  border-radius: 10%;
+  background-color: #f5f5f5ad;
+  color: #111111;
+  padding: 1%;
+  margin-bottom: 2%;
+}
+
+a.addGameButton:hover {
+  background-color: #072c44b2;
+  color: #f5f5f5;
+  border: 1px solid #072c44b2;
+  text-decoration: none;
+}
+
+h1.beach-header {
+  font-size: 3em;
+}
+
+.opponentDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  color: #f5f5f5;
+  width: 300px;
+  margin: auto;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.opponentDiv img {
+  width: 60px;
+  height: auto;
+  margin: 0.8rem;
+  border: 1px solid #f5f5f5;
+  border-radius: 5px;
+  padding: 0.4rem;
+}
+
+.opponentDiv h2 {
+  font-size: 60px;
+}
+
+nav a,
+li.nav-item a.nav-link,
+#logout-btn {
+  color: #f5f5f5;
+  font-size: 1.5em;
+  line-height: 3em;
+}
+
+nav a:hover,
+li.nav-item a.nav-link:hover,
+#logout-btn:hover {
+  color: #c45b05;
+}
+
+.logout-btn {
+  color: #f5f5f5;
+  font-size: 1.5em;
+}
+
+.instructions,
+.rules {
+  text-align: center;
+}
+
+button.navbar-toggler {
+  background-color: #f5f5f57e;
+  color: #111111;
+}
+
+.navbar-toggler-icon {
+  color: #111111;
+}
