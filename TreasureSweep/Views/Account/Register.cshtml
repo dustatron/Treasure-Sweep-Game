@@ -2,6 +2,12 @@
 @model RegisterViewModel
 <div class="">
       <div class="col-md-6 offset-md-3">
+      @if (String.IsNullOrWhiteSpace(ViewBag.Message) == false)
+      {
+        <div class="alert alert-danger" role="alert">
+          @ViewBag.Message
+        </div>
+      }
         <h1>NEW USER REGISTRATION</h1>
         <hr/>
         @using (Html.BeginForm("Register", "Account", FormMethod.Post))

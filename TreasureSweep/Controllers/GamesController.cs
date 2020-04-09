@@ -30,7 +30,7 @@ namespace TeasureSweepGame.Controllers
     public ActionResult Index()
     {
       List<Profile> players = _db.Profiles.ToList();
-      Dictionary<string, int> leaders = new Dictionary<string, int>();
+      List<KeyValuePair<string, int>> leaders = new List<KeyValuePair<string, int>>();
       foreach (Profile player in players)
       {
         int wins = 0;
@@ -53,7 +53,7 @@ namespace TeasureSweepGame.Controllers
           {
             double division = (double)wins / (double)completedGames;
             int ratio = (int)(division * 100);
-            leaders.Add(player.Name, ratio);
+            leaders.Add(new KeyValuePair<string, int>(player.Name, ratio));
           }
         }
       }
