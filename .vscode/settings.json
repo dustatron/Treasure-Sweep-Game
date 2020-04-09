@@ -3,5 +3,6 @@
   "emmet.includeLanguages": {
     "razor": "html",
     "aspnetcorerazor": "html"
-  }
+  },
+  "appService.defaultWebAppToDeploy": "None"
 }
