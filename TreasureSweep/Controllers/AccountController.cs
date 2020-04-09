@@ -39,7 +39,7 @@ namespace TreasureSweepGame.Controllers
     {
       try
       {
-        if (String.IsNullOrWhiteSpace(model.Email) || String.IsNullOrWhiteSpace(model.Password))
+        if (String.IsNullOrWhiteSpace(model.Email) || String.IsNullOrWhiteSpace(model.Password) || model.Password != model.ConfirmPassword)
         {
           throw new System.InvalidOperationException("invalid input");
         }
