@@ -1,22 +1,26 @@
 @using TreasureSweepGame.ViewModels
 @model RegisterViewModel
+<div class="">
+      <div class="col-md-6 offset-md-3">
+        <h1>NEW USER REGISTRATION</h1>
+        <hr/>
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+        {
 
-<h1>NEW USER REGISTRATION</h1>
-<hr/>
-@using (Html.BeginForm("Register", "Account", FormMethod.Post))
-{
+            @Html.LabelFor(user => user.Email)
+            @Html.TextBoxFor(user=> user.Email)
+            <br>
+            @Html.LabelFor(user=> user.Password)
+            @Html.PasswordFor(user=> user.Password)
+            <br>
+            @Html.LabelFor(user=> user.ConfirmPassword)
+            @Html.PasswordFor(user=> user.ConfirmPassword)
+            <br>
+            <input type="submit" value="REGISTER" />
+        }
+        <br>
+        <h4>ALREADY HAVE AN ACCOUNT?</h4>
+        @Html.ActionLink("LOG IN", "Login", "Account", null, new { @class="btn-block" })
 
-    @Html.LabelFor(user => user.Email)
-    @Html.TextBoxFor(user=> user.Email)
-    <br>
-    @Html.LabelFor(user=> user.Password)
-    @Html.PasswordFor(user=> user.Password)
-    <br>
-    @Html.LabelFor(user=> user.ConfirmPassword)
-    @Html.PasswordFor(user=> user.ConfirmPassword)
-    <br>
-    <input type="submit" value="REGISTER" />
-}
-<br>
-<h4>ALREADY HAVE AN ACCOUNT?</h4>
-@Html.ActionLink("LOG IN", "Login", "Account", null, new { @class="btn-block" })
+      </div>
+</div>

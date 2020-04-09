@@ -7,17 +7,20 @@
   <div class="col-md-6 text-center">
     <h4>Player 1: @ViewBag.PlayerOne.Name</h4>
     <img src="@ViewBag.PlayerOne.Img" alt="" class="profile-pic">
+    <h4>@ViewBag.PlayerOne.TagLine</h4>
   </div>
 
   <div class="col-md-6 text-center">
     <h4>Player 2: @ViewBag.PlayerTwo.Name</h4>
     <img src="@ViewBag.PlayerTwo.Img" alt="" class="profile-pic">
+    <h4>@ViewBag.PlayerTwo.TagLine</h4>
   </div>
 </div>
 
 <div class="row">
 
   <div class="col-md-6 offset-3 text-center">
+  <h4>TURN #@Model.TurnCount</h4>
   @if(Model.TurnCount % 2 == 1 && Model.IsComplete == false)
   {
     <h4>@ViewBag.PlayerTwo.Name's Turn!</h4>

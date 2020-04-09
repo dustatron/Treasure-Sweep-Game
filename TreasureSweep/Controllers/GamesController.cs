@@ -26,6 +26,7 @@ namespace TeasureSweepGame.Controllers
       _userManager = userManager;
     }
 
+    [AllowAnonymous]
     public ActionResult Index()
     {
       List<Profile> players = _db.Profiles.ToList();

@@ -38,7 +38,7 @@ namespace TreasureSweepGame
         options.MinimumSameSitePolicy = SameSiteMode.None;
       });
 
-      const string connectionString = @"Data Source=treasuresweep.db";
+      // const string connectionString = @"Data Source=treasuresweep.db";
       var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

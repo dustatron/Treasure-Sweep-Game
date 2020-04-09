@@ -25,7 +25,18 @@ namespace TeasureSweepGame.Controllers
       _userManager = userManager;
     }
 
+    [AllowAnonymous]
     public async Task<ActionResult> Index()
+    {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      List<Profile> results = _db.Profiles.ToList();
+      Profile thisProfile = _db.Profiles.FirstOrDefault(entry => entry.User == currentUser);
+      ViewBag.CurrentUserId = thisProfile.ProfileId;
+      return View(results);
+    }
+
+    public async Task<ActionResult> Details()
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
