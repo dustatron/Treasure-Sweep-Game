@@ -5,7 +5,7 @@
 #### By: **Michelle Morin**, **Jamison Cozart**, **Dusty McCord**, **Patrick Kille** April 6-9, 2020
 
 ## Description
-_This application allows users to play Treasure Sweep, a battleship-esque game for uncovering hidden treasure on an opponent's beach rather than sinking their ships._
+_This application allows users to play Treasure Sweep, a battleship-esque game for uncovering hidden treasure on an opponent's beach rather than sinking their ships. This application is available to play on [Heroku](http://treasuresweepgame.herokuapp.com/)!_
 
 ## Specifications:
 * When a user registers a new account, the application redirects to a log in view.
@@ -37,12 +37,13 @@ _We defined our minimum viable product (MVP) as an application that allows a use
 * Notify each user when the game was over and identify the winning player.
 
 _In addition to the MVP, we defined several stretch goals, including:_
-* Integrating a chat feature, so users in a game could send messages back and forth to one another
-* Setting up an email mailer, to notify each user when it was their turn to play.
 * Randomly generating new game boards each turn
   - We incorporated this stretch goal in our Game model. Each new game object is instantiated with two game boards each having several treasure chests and a mine randomly placed.
-* Implementing private and public game options, so that a user could join any public game that does not have a second player
 * Hosting the application
+  - We deployed this application to [Heroku](http://treasuresweepgame.herokuapp.com/) by wrapping the TreasureSweep application in a docker container and releasing the docker container to Heroku. This process required us to switch from a MySQL database to a SQLite database, so that the database could be dockerized and sent to Heroku. Unfortunately using SQLite on Heroku means that the database is wiped every 24 hours. 
+* Integrating a chat feature, so users in a game could send messages back and forth to one another
+* Setting up an email mailer, to notify each user when it was their turn to play.
+* Implementing private and public game options, so that a user could join any public game that does not have a second player
 
 ## Setup/Installation Requirements
 
@@ -110,18 +111,26 @@ _Run this application by entering the following command in Terminal (macOS) or P
 
 _To view/edit the source code of this application, open the contents of the TreasureSweepGame.Solution directory in a text editor or IDE of your choice (e.g., to open all contents of the directory in Visual Studio Code on macOS, enter the command_ ``code .`` _in Terminal at the root of the TreasureSweepGame.Solution directory)._
 
+## Known Bugs
+
+_Currently, the deployed version of this application allows a player to take multiple turns during one turn by clicking on multiple sand tiles in rapid succession. We think this has to do with the speed at which our application runs on Heroku, and need to add additional validation to prevent a user from taking multiple turns in one turn._ 
+
 ## Technologies Used
 
 * Git
 * HTML
 * CSS
+* JavaScript
 * C#
 * dotnet script
 * ASP.NET Core MVC 2.2
 * Entity Framework Core 2.2
 * Identity
+* Newtonsoft.Json
 * Razor
-* MySQL/SQLite
+* SQLite
+* Docker
+* Deployed to [Heroku](http://treasuresweepgame.herokuapp.com/)!
 
 ## License
 
