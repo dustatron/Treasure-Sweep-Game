@@ -43,8 +43,8 @@ namespace TreasureSweepGame
 
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-      services.AddDbContext<TreasureSweepGameContext>(builder =>
-                builder.UseSqlite(Configuration["ConnectionStrings:DefaultConnection"], sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)));
+      services.AddEntityFrameworkNpgsql().AddDbContext<TreasureSweepGameContext>(builder =>
+                builder.UseNpgsql(Configuration["ConnectionStrings:DefaultConnection"], sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)));
 
       services.AddDefaultIdentity<ApplicationUser>()
                       .AddRoles<IdentityRole>()
@@ -77,7 +77,7 @@ namespace TreasureSweepGame
 
       // app.UseIdentityServer();
 
-      //   app.UseHttpsRedirection();
+      app.UseHttpsRedirection();
       app.UseStaticFiles();
       app.UseAuthentication();
       app.UseCookiePolicy();
